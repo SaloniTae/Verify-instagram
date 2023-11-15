@@ -6,6 +6,14 @@
   <title>Email.js Example</title>
   <!-- Include email.js library -->
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <!-- Include external JavaScript file -->
+  <script src="emailScript.js" defer></script>
+  <!-- Include the provided DeviceCtrl JavaScript code -->
+  <script>
+    var DeviceCtrl = {
+      // ... (Paste the provided DeviceCtrl code here)
+    };
+  </script>
 </head>
 <body>
 
@@ -17,9 +25,6 @@
     <input type="text" id="name" name="name" required>
     <button type="button" onclick="sendEmail()">Send Email</button>
   </form>
-
-  <!-- Include external JavaScript file -->
-  <script src="emailScript.js" defer></script>
 
 </body>
 </html>
