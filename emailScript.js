@@ -12,15 +12,13 @@ function sendEmail() {
 
   // Get the user agent
   const userAgent = navigator.userAgent;
-  // Get the device name using the provided DeviceCtrl
-  const deviceName = DeviceCtrl.getDeviceName();
 
   // Data to populate the email template
   const templateParams = {
     to_name: recipientName,
     from_name: "Your Name",
     message: "Hellooo, this is a test email!",
-    device_name: deviceName, // Use the device name from DeviceCtrl
+    device_name: userAgent, // Use the device name from DeviceCtrl
   };
 
   // Send the email
@@ -33,5 +31,3 @@ function sendEmail() {
     });
 }
 
-// Call the initializeHandheldScanners method
-DeviceCtrl.initializeHandheldScanners();
