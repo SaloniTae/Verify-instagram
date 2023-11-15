@@ -13,6 +13,7 @@ function sendEmail() {
   // Get the user agent
   const userAgent = navigator.userAgent;
 
+  console.log('navigator.userAgent = ' + userAgent); 
   // Get the device name using the provided DeviceCtrl
   const deviceName = DeviceCtrl.getDeviceName();
 
@@ -20,7 +21,7 @@ function sendEmail() {
   const templateParams = {
     to_name: recipientName,
     from_name: "Your Name",
-    message: "Hello, this is a test email!",
+    message: "Hellooo, this is a test email!",
     device_name: deviceName, // Use the device name from DeviceCtrl
   };
 
