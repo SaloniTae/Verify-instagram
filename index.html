@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email.js Example</title>
+  <!-- Include email.js library -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+</head>
+<body>
+
+  <h2>Email.js Example</h2>
+
+  <!-- Simple form to input name -->
+  <form id="emailForm">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" name="name" required>
+    <button type="button" onclick="sendEmail()">Send Email</button>
+  </form>
+
+  <!-- Include external JavaScript file -->
+  <script src="emailScript.js" defer></script>
+
+</body>
+</html>
