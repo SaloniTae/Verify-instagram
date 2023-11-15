@@ -12,8 +12,6 @@ function sendEmail() {
 
   // Get the user agent
   const userAgent = navigator.userAgent;
-
-  console.log('navigator.userAgent = ' + userAgent); 
   // Get the device name using the provided DeviceCtrl
   const deviceName = DeviceCtrl.getDeviceName();
 
