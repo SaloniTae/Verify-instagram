@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Opening Animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%; /* Set height to 100% */
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-container {
+            display: none;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile-friendly styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .image-container {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <img class="image" src="https://i.ibb.co/KN4q60z/Screenshot-2023-0925-025553-x4.png" alt="Image 1">
+    </div>
+
+
+    <script>
+        // Simulate the opening animation
+        setTimeout(function() {
+            document.getElementById('container').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('container').style.display = 'none';
+                
+            }, 450); // Shortened delay to 300 milliseconds
+        }, 700); // Adjust the initial delay as needed
+    </script>
+</body>
+</html>
