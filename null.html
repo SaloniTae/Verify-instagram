@@ -50,14 +50,13 @@
 
 
     <script>
-        // Simulate the opening animation
-        setTimeout(function() {
-            document.getElementById('container').style.opacity = '0';
-            setTimeout(function() {
-                document.getElementById('container').style.display = 'none';
-                
-            }, 450); // Shortened delay to 300 milliseconds
-        }, 700); // Adjust the initial delay as needed
-    </script>
+    // Simulate the opening animation (adjust the delay as needed)
+    setTimeout(() => {
+      document.getElementById('container').style.opacity = '0';
+      setTimeout(() => {
+        window.dispatchEvent(new Event("animationFinished"));
+      }, 450);
+    }, 700);
+  </script>
 </body>
 </html>
