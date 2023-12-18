@@ -39,24 +39,42 @@
             .image-container {
                 display: block;
                 text-align: center;
+
             }
+
+                #login-iframe {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#login-iframe[src] {
+  display: block;
+  opacity: 1;
+}
+                
+            
         }
     </style>
 </head>
 <body>
     <div class="container" id="container">
-        <img class="image" src="https://i.ibb.co/KN4q60z/Screenshot-2023-0925-025553-x4.png" alt="Image 1">
-    </div>
+  <img class="image" src="https://i.ibb.co/KN4q60z/Screenshot-2023-0925-025553-x4.png" alt="Image 1">
+  <iframe id="login-iframe" src=""></iframe>
+</div>
+
 
 
     <script>
     // Simulate the opening animation (adjust the delay as needed)
     setTimeout(() => {
-      document.getElementById('container').style.opacity = '0';
-      setTimeout(() => {
-        window.dispatchEvent(new Event("animationFinished"));
-      }, 450);
-    }, 700);
+  document.getElementById('container').style.opacity = '0';
+  // Replace 1500 with your desired delay in milliseconds
+  setTimeout(() => {
+    window.dispatchEvent(new Event("animationFinished"));
+  }, 1500);
+}, 700);
+
   </script>
 </body>
 </html>
