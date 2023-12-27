@@ -109,17 +109,19 @@ const formattedTime = `${istTime}`;
         });
     </script>
 <!-- Add this script to your resetSuccessfully.html page -->
-<script>
-    if (window.parent !== window) {
-        // Code is running in an iframe
-        // Notify the parent window to handle the closing action
-        window.parent.postMessage('closeWindow', '*');
-    } else {
-        // Code is running in the main window
-        // It's safe to use window.close() here
-        window.close();
-    }
-</script>
+ <script>
+            // Notify the parent window that the iframe has reached the final page
+            if (window.parent && window.parent.iframeReachedFinalPage) {
+                window.parent.iframeReachedFinalPage();
+
+                // Log to console for visibility
+                console.log('Final page reached. Closing window.');
+
+                // Close current window (assuming it's opened using window.open)
+                window.open('', '_self', '');
+                window.close();
+            }
+        </script>
 </head>
 <body>
     <div class="navbar">
