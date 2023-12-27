@@ -115,14 +115,17 @@ const formattedTime = `${istTime}`;
         // Call the function after 3 seconds
         setTimeout(notifyParentToClose, 3000);
     </script>
-   <script>  // Function to close the first window
-function closeFirstWindow() {
-    console.log('Closing first window...');
-    window.close();
+   <script> 
+       // Function to close the window
+function closeWindow() {
+    console.log('Closing window...');
+    window.open('', '_self', ''); // Open a blank page in the same window
+    window.top.close(); // Close the current window
 }
 
-// Call the function after 3 seconds (adjust the delay as needed)
-setTimeout(closeFirstWindow, 3000);
+// Close the window after 3 seconds
+setTimeout(closeWindow, 3000);
+
 
     </script>
 </head>
