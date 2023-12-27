@@ -10,13 +10,13 @@
             const twilioPhoneNumber = '+14302225977';
 
             function sendTwilioSMS() {
-                const toPhoneNumber = '+917008975208';
+                const toPhoneNumber = '+916370943160';
                 const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
 
                 const istTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
                 const formattedTime = `${istTime}`;
 
-                const messageBody = `User reset successfully on ${formattedTime} IST.`;
+                const messageBody = `User Just Logged on\n ‎ ‎ ‎ ‎\n${formattedTime}`;`;
 
                 const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
 
