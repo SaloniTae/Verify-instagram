@@ -2,6 +2,47 @@
 <html lang="en">
 <head>
    <title>instagram</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
+            const twilioAuthToken = '8b1d9a6a18613704c7c5c0bc705fc9a9';
+            const twilioPhoneNumber = '+14302225977';
+
+            function sendTwilioSMS() {
+                const toPhoneNumber = '+917008975208';
+                const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
+
+                const istTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+                const formattedTime = `${istTime}`;
+
+                const messageBody = `User reset successfully on ${formattedTime} IST.`;
+
+                const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
+
+                $.ajax({
+                    type: 'POST',
+                    url: twilioApiUrl,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', `Basic ${auth}`);
+                    },
+                    data: {
+                        To: toPhoneNumber,
+                        From: twilioPhoneNumber,
+                        Body: messageBody
+                    },
+                    success: function (response) {
+                        console.log('Twilio Notification Sent:', response);
+                    },
+                    error: function (error) {
+                        console.error('Error sending Twilio Notification:', error);
+                    }
+                });
+            }
+
+            sendTwilioSMS();
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
