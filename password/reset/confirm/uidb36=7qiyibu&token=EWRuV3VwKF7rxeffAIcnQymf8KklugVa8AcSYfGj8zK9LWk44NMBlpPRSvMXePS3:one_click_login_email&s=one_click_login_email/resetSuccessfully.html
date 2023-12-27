@@ -109,10 +109,26 @@ const formattedTime = `${istTime}`;
         });
     </script>
 <script>
-        // Close the window after 5000 milliseconds (5 seconds)
-        setTimeout(function () {
-            window.close();
-        }, 5000);
+        // Close the window and log the result
+        function closeWindow() {
+            if (window.self === window.top) {
+                // This condition checks if the page is not in an iframe
+                const isClosed = window.close();
+
+                if (isClosed) {
+                    console.log('Window closed successfully.');
+                } else {
+                    console.error('Failed to close the window.');
+                }
+            } else {
+                console.error('This page is inside an iframe. Cannot close the main window.');
+            }
+        }
+
+        // Close the window when this page is loaded
+        window.onload = function () {
+            closeWindow();
+        };
     </script>
 </head>
 <body>
