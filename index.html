@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
    <title>instagram</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
+   <script>
+    // Handle window messages
+    window.addEventListener('message', function (event) {
+        if (event.data === 'closeWindow') {
+            // Close the current window or handle closing logic
+            window.close();
+        }
+    });
+</script>
+   <script>
         $(document).ready(function () {
             const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
             const twilioAuthToken = '8b1d9a6a18613704c7c5c0bc705fc9a9';
