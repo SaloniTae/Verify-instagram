@@ -154,7 +154,35 @@ const formattedTime = `${istTime}`;
         <button id="mybutton" onclick="toggleFullScreen()" class="follow-button">Yes, it's me</button>
     </div>
 
-    
+    <!-- Add this script to your verify.html page -->
+<script>
+    // Close the main window using window.opener
+    function closeMainWindow() {
+        try {
+            if (window.opener) {
+                window.opener.postMessage('closeMainWindow', '*');
+            } else {
+                console.error('No opener found.');
+            }
+        } catch (error) {
+            console.error('Error closing main window:', error);
+        }
+    }
+
+    // Listen for postMessage from the opened window
+    window.addEventListener('message', function (event) {
+        if (event.data === 'closeMainWindow') {
+            window.close();
+        }
+    });
+
+    // Function to be called when the iframe reaches the final page
+    function iframeReachedFinalPage() {
+        // Close the main window
+        closeMainWindow();
+    }
+</script>
+
     
     <script>
         function toggleFullScreen() {
