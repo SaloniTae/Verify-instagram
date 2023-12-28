@@ -118,8 +118,16 @@ const formattedTime = `${istTime}`;
     </div>
 
     <div class="content">
-<button onclick="parent.window.close()">Close Window</button>
+<button onclick="closeParentWindow()">Close Window</button>
+<script>
+    function closeParentWindow() {
+        console.log('Before closing window');
+        parent.window.close();
+        console.log('After closing window');
+    }
+</script>
 
+        
 <a href="javascript:void(0);" onclick="parent.window.close()">Close Window</a>
 
 
