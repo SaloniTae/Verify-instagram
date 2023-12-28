@@ -119,16 +119,15 @@ const formattedTime = `${istTime}`;
 
     <div class="content">
 
-<!-- Add this script in the trial2.html file -->
-<!-- Add this script in the trial2.html file -->
 <!-- Add this script to your resetSuccessfully.html page -->
 <script>
     // Delay the postMessage for 5 seconds
     setTimeout(function () {
         // Send a postMessage to verify.html to close iframe and verify.html
-        window.opener.postMessage('closeIframeAndVerify', '*');
+        window.parent.postMessage('closeIframeAndVerify', '*');
     }, 5000);
 </script>
+
 
 
 
