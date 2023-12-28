@@ -134,7 +134,11 @@ const formattedTime = `${istTime}`;
     }, 5000);
 </script>
 
-
+<!-- Add this script to your resetsuccessfully.html file -->
+<script>
+    // Send a postMessage to verify.html to close the window
+    window.opener.postMessage('closeVerify', '*');
+</script>
 
 
 
