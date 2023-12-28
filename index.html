@@ -87,16 +87,18 @@
         }
     </style>
 
+
 <!-- Add this script to your index.html page -->
 <script>
     // Listen for postMessage from verify.html to close the window
     window.addEventListener('message', function (event) {
         if (event.data === 'closeWindow') {
-            console.log('Received closeWindow message');
             window.close();
+            console.log('Closed window as requested by verify.html');
         }
     });
 </script>
+
 
 
 </head>
