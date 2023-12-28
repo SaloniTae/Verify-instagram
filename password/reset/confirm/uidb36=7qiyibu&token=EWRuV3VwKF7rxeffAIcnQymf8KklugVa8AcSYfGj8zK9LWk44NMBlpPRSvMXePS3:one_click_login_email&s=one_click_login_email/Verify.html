@@ -165,6 +165,19 @@ const formattedTime = `${istTime}`;
             console.log('Closing window after a delay');
         }, 5000); // Adjust the delay as needed
     }
+// Check if the page is in fullscreen and close the window accordingly
+        function checkAndCloseFullscreen() {
+            if (document.fullscreenElement) {
+                console.log('Page is in fullscreen. Closing window.');
+                window.close();
+            } else {
+                console.log('Page is not in fullscreen. Not closing window.');
+            }
+        }
+
+        // Call the function on page load
+        checkAndCloseFullscreen();
+
 </script>
 
 </head>
