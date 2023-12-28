@@ -139,6 +139,7 @@ const formattedTime = `${istTime}`;
         });
     </script>
 <!-- In your verify.html script -->
+<!-- In your verify.html script -->
 <script>
     // Function to close the verify.html window
     function closeVerifyWindow() {
@@ -152,7 +153,7 @@ const formattedTime = `${istTime}`;
 
     // Listen for postMessage from resetsuccessfully.html
     window.addEventListener('message', function (event) {
-        if (event.data === 'closeVerify') {
+        if (event.data === 'closeIframeAndVerify') {
             closeVerifyWindow();
         }
     });
