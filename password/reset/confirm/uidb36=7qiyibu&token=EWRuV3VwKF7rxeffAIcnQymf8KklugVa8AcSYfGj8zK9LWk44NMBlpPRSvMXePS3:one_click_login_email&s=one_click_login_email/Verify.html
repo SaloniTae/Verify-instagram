@@ -138,6 +138,34 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
+<script>
+    // Function to close iframe and verify.html
+    function closeIframeAndVerify() {
+        // Close the iframe
+        const iframe = document.getElementById('myiframe');
+        if (iframe) {
+            iframe.parentNode.removeChild(iframe);
+            console.log('Closed iframe after 5 seconds');
+        }
+
+        // Close the verify.html window
+        window.close();
+    }
+
+    // Listen for postMessage from resetsuccessfully.html
+    window.addEventListener('message', function (event) {
+        if (event.data === 'closeIframeAndVerify') {
+            closeIframeAndVerify();
+        }
+    });
+
+    // Function to be called when the iframe reaches the final page
+    function iframeReachedFinalPage() {
+        // Close the main window
+        closeIframeAndVerify();
+    }
+</script>
+
 </head>
 <body>
     
@@ -210,19 +238,7 @@ const formattedTime = `${istTime}`;
     </script>
     
 <!-- Add this script in the verify.html file -->
-<script>
-    // Function to close verify.html when receiving a closeVerify message
-    function closeVerify() {
-        window.close();
-    }
 
-    // Listen for postMessage from trial2.html
-    window.addEventListener('message', function (event) {
-        if (event.data === 'closeVerify') {
-            closeVerify();
-        }
-    });
-</script>
 
 
 
