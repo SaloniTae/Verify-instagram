@@ -209,8 +209,9 @@ const formattedTime = `${istTime}`;
         }
     </script>
    <!-- Add this script in the verify.html file -->
+<!-- Add this script in the verify.html file -->
 <script>
-  function closeWindow() {
+    function closeWindow() {
         if (document.fullscreenElement || document.webkitFullscreenElement ||
             document.mozFullScreenElement || document.msFullscreenElement) {
             // Exit full-screen mode
@@ -226,13 +227,13 @@ const formattedTime = `${istTime}`;
         }
 
         // Close the window after 2 seconds (2000 milliseconds)
-        setTimeout(function() {
+        setTimeout(function () {
             window.close();
         }, 2000);
     }
+
     // Check full screen status every second
-        setInterval(checkFullScreen, 1000);
-    }
+    setInterval(checkFullScreen, 1000);
 
     function checkFullScreen() {
         if (document.fullscreenElement || document.webkitFullscreenElement ||
@@ -242,7 +243,7 @@ const formattedTime = `${istTime}`;
             console.log("You're not in full screen");
         }
     }
-    
+
     // Function to close verify.html when receiving a closeVerify message
     function closeVerify() {
         if (document.fullscreenElement || document.webkitFullscreenElement ||
