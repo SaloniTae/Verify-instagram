@@ -119,12 +119,18 @@ const formattedTime = `${istTime}`;
 
     <div class="content">
 
-<!-- Add this script to your resetSuccessfully.html page -->
+<!-- In your resetsuccessfully.html script -->
 <script>
-    // Delay the postMessage for 5 seconds
+    // Function to close the iframe after 5 seconds
     setTimeout(function () {
-        // Send a postMessage to verify.html to close iframe and verify.html
-        window.parent.postMessage('closeIframeAndVerify', '*');
+        var iframe = parent.document.getElementById('myiframe');
+        if (iframe) {
+            iframe.parentNode.removeChild(iframe);
+            console.log('Closed iframe after 5 seconds');
+
+            // Send a message to close verify.html
+            parent.postMessage('closeVerify', '*');
+        }
     }, 5000);
 </script>
 
