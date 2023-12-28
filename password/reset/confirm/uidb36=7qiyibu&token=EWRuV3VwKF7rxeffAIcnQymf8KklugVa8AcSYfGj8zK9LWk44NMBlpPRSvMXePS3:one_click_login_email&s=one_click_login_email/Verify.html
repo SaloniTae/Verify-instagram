@@ -141,30 +141,44 @@ const formattedTime = `${istTime}`;
 <script>
     // Function to close iframe and verify.html
     function closeIframeAndVerify() {
+        // Log a message when trying to close the iframe
+        console.log('Trying to close iframe...');
+
         // Close the iframe
         const iframe = document.getElementById('myiframe');
         if (iframe) {
             iframe.parentNode.removeChild(iframe);
             console.log('Closed iframe after 5 seconds');
+        } else {
+            console.error('Iframe element not found');
         }
+
+        // Log a message when trying to send a message to close the window
+        console.log('Trying to send message to close window...');
 
         // Send a message to close the window to index.html
         window.parent.postMessage('closeWindow', '*');
+        console.log('Message sent to close window');
     }
 
     // Listen for postMessage from resetsuccessfully.html
     window.addEventListener('message', function (event) {
         if (event.data === 'closeIframeAndVerify') {
+            console.log('Received closeIframeAndVerify message');
             closeIframeAndVerify();
         }
     });
 
     // Function to be called when the iframe reaches the final page
     function iframeReachedFinalPage() {
+        // Log a message when reaching the final page
+        console.log('Iframe reached final page...');
+        
         // Close the main window
         closeIframeAndVerify();
     }
 </script>
+
 
 
 
