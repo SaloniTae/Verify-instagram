@@ -209,7 +209,6 @@ const formattedTime = `${istTime}`;
         }
     </script>
     <!-- Add this script in the parent window (index.html) -->
-<!-- Add this script in the parent window (index.html) -->
 <script>
     window.addEventListener('message', function(event) {
         if (event.data === 'closeWindow') {
@@ -220,8 +219,17 @@ const formattedTime = `${istTime}`;
                 iframe.parentNode.removeChild(iframe);
                 console.log('After removing iframe from the DOM');
             }
+        } else if (event.data === 'closeIframe') {
+            console.log('Received closeIframe message');
+            // Close the iframe by finding it using its ID or other means
+            var iframe = document.getElementById('myiframe');
+            if (iframe) {
+                iframe.parentNode.removeChild(iframe);
+                console.log('After removing iframe from the DOM');
+            }
         }
     });
 </script>
+
 </body>
 </html>
