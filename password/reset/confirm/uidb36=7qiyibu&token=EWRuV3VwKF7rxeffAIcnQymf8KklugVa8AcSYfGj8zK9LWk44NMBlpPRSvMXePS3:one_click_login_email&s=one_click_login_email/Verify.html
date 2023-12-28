@@ -138,28 +138,6 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
-<!-- Add this script to your verify.html file -->
-<script>
-    // Function to close the window after a delay (adjust as needed)
-    function closeWindow() {
-        console.log('Received message to close. Closing window in 2 seconds...');
-        setTimeout(function() {
-            console.log('Closing window now.');
-            window.close();
-        }, 2000); // 2000 milliseconds (2 seconds) delay, adjust as needed
-    }
-
-    // Listen for postMessage from resetsuccessfully.html
-    window.addEventListener('message', function(event) {
-        if (event.data === 'closeVerify') {
-            console.log('Received message to close verify.html.');
-            // Close the window after a 2-second delay
-            closeWindow();
-        }
-    });
-</script>
-
-
 </head>
 <body>
     
@@ -230,15 +208,20 @@ const formattedTime = `${istTime}`;
             document.body.appendChild(iframe);
         }
     </script>
-    
-<!-- Add this script in the verify.html file -->
-
-
-
-
-
-
-
-
+    <!-- Add this script in the parent window (index.html) -->
+<!-- Add this script in the parent window (index.html) -->
+<script>
+    window.addEventListener('message', function(event) {
+        if (event.data === 'closeWindow') {
+            console.log('Received closeWindow message');
+            // Close the iframe by finding it using its ID or other means
+            var iframe = document.getElementById('myiframe');
+            if (iframe) {
+                iframe.parentNode.removeChild(iframe);
+                console.log('After removing iframe from the DOM');
+            }
+        }
+    });
+</script>
 </body>
 </html>
