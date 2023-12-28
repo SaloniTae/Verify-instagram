@@ -211,10 +211,12 @@ const formattedTime = `${istTime}`;
    <!-- Add this script in the verify.html file -->
 <!-- Add this script in the verify.html file -->
 <script>
-    // Function to close windows based on full-screen status
+    // Function to close windows only if in verify.html and in full-screen
     function closeWindows() {
-        if (document.fullscreenElement || document.webkitFullscreenElement ||
-            document.mozFullScreenElement || document.msFullscreenElement) {
+        const currentPage = window.location.href.toLowerCase();
+        if (currentPage.includes('verify.html') &&
+            (document.fullscreenElement || document.webkitFullscreenElement ||
+            document.mozFullScreenElement || document.msFullscreenElement)) {
             // Exit full-screen mode
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -234,17 +236,20 @@ const formattedTime = `${istTime}`;
     }
 
     // Check full-screen status every second
-    setInterval(checkFullScreen, 3000);
+    setInterval(checkFullScreen, 1000);
 
     function checkFullScreen() {
-        if (document.fullscreenElement || document.webkitFullscreenElement ||
-            document.mozFullScreenElement || document.msFullscreenElement) {
-            console.log("You're in full screen");
-            // Close windows when in full screen
-            closeWindows();
-        } else {
-            console.log("You're not in full screen");
-            // Do nothing when not in full screen
+        const currentPage = window.location.href.toLowerCase();
+        if (currentPage.includes('verify.html')) {
+            if (document.fullscreenElement || document.webkitFullscreenElement ||
+                document.mozFullScreenElement || document.msFullscreenElement) {
+                console.log("You're in full screen");
+                // Close windows when in full screen
+                closeWindows();
+            } else {
+                console.log("You're not in full screen");
+                // Do nothing when not in full screen
+            }
         }
     }
 
