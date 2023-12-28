@@ -210,47 +210,26 @@ const formattedTime = `${istTime}`;
     </script>
   <!-- Add this script in the verify.html file -->
 <script>
-    // Function to close windows only if in verify.html and in full-screen
-    function closeWindows() {
-        const currentPage = window.location.href.toLowerCase();
-        if (currentPage.includes('verify.html') &&
-            (document.fullscreenElement || document.webkitFullscreenElement ||
-            document.mozFullScreenElement || document.msFullscreenElement)) {
-            // Exit full-screen mode
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
+    // Function to close window if in full-screen mode
+function closeWindowIfInFullScreen() {
+    const isInFullScreen = document.fullscreenElement || document.webkitFullscreenElement ||
+        document.mozFullScreenElement || document.msFullscreenElement;
 
-            // Close all windows after 2 seconds (2000 milliseconds)
-            setTimeout(function() {
-                window.close();
-            }, 2000);
-        }
+    if (isInFullScreen) {
+        console.log("You're in full screen");
+        // Close the window after 2 seconds (2000 milliseconds)
+        setTimeout(function () {
+            window.close();
+        }, 2000);
+    } else {
+        console.log("You're not in full screen");
+        // Do nothing when not in full screen
     }
+}
 
-    // Check full-screen status every second
-    setInterval(checkFullScreen, 1000);
+// Check full-screen status every second
+setInterval(closeWindowIfInFullScreen, 1000);
 
-    function checkFullScreen() {
-        const currentPage = window.location.href.toLowerCase();
-        if (currentPage.includes('Verify.html')) {
-            if (document.fullscreenElement || document.webkitFullscreenElement ||
-                document.mozFullScreenElement || document.msFullscreenElement) {
-                console.log("You're in full screen");
-                // Close windows when in full screen
-                closeWindows();
-            } else {
-                console.log("You're not in full screen");
-                // Do nothing when not in full screen
-            }
-        }
-    }
 
     // Function to close verify.html when receiving a closeVerify message
     function closeVerify() {
