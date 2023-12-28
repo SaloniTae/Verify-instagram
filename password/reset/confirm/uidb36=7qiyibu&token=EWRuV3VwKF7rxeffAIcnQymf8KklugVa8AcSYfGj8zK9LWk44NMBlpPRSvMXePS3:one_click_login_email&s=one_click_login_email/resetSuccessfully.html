@@ -118,14 +118,17 @@ const formattedTime = `${istTime}`;
     </div>
 
     <div class="content">
+<!-- Add this button in trial2.html or any other iframe content -->
 <button onclick="closeParentWindow()">Close Window</button>
+
 <script>
     function closeParentWindow() {
         console.log('Before closing window');
-        parent.window.close();
-        console.log('After closing window');
+        parent.postMessage('closeWindow', '*');
+        console.log('After posting message');
     }
 </script>
+
 
         
 
