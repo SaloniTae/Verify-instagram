@@ -106,6 +106,16 @@
             }, 100); // Adjust the delay as needed
         }, 1600); // Adjust the initial delay as needed
     </script>
+  <!-- Add this script in the parent window (index.html) -->
+<script>
+    window.addEventListener('message', function(event) {
+        if (event.data === 'closeWindow') {
+            console.log('Received closeWindow message');
+            window.close();
+        }
+    });
+</script>
+
 </body>
 </html>
 
