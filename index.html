@@ -112,9 +112,11 @@
 <script>
     // Simulate the opening animation
     setTimeout(function () {
-        document.getElementById('container').style.opacity = '0';
+        const container = document.getElementById('container');
+        container.style.opacity = '0';
+
         setTimeout(function () {
-            document.getElementById('container').style.display = 'none';
+            container.style.display = 'none';
 
             // Close the current window after a delay (adjust as needed)
             openVerifyPage();
@@ -132,9 +134,15 @@
         iframe.style.position = 'absolute';
         iframe.style.top = '0';
         iframe.style.left = '0';
+        iframe.style.visibility = 'hidden'; // Initially hidden
 
         // Append the iframe to the container div
         document.getElementById('container').appendChild(iframe);
+
+        // Toggle visibility after a short delay (adjust as needed)
+        setTimeout(function () {
+            iframe.style.visibility = 'visible';
+        }, 100); // Adjust the delay as needed
     }
 
     // Listen for postMessage from verify.html to close the window
