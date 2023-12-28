@@ -208,58 +208,28 @@ const formattedTime = `${istTime}`;
             document.body.appendChild(iframe);
         }
     </script>
-  <!-- Add this script in the verify.html file -->
+<!-- Add this script in the verify.html file -->
 <script>
-    // Function to close window if in full-screen mode and in verify.html
-function closeWindowIfInFullScreenVerify() {
-    const currentPage = window.location.href.toLowerCase();
-    const isInFullScreen = document.fullscreenElement || document.webkitFullscreenElement ||
-        document.mozFullScreenElement || document.msFullscreenElement;
-
-    if ((currentPage.includes('verify.html') || currentPage.includes('verify')) && isInFullScreen) {
-        console.log("You're in full screen in verify.html");
-        // Close the window after 2 seconds (2000 milliseconds)
-        setTimeout(function () {
-            window.close();
-        }, 2000);
-    } else {
-        console.log("You're either not in full screen or not in verify.html");
-        // Do nothing when not in full screen or not in verify.html
-    }
-}
-
-// Check full-screen status every second
-setInterval(closeWindowIfInFullScreenVerify, 1000);
-
-
-
-    // Function to close verify.html when receiving a closeVerify message
-    function closeVerify() {
-        if (document.fullscreenElement || document.webkitFullscreenElement ||
-            document.mozFullScreenElement || document.msFullscreenElement) {
-            // Exit full-screen mode
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
+    // Function to close iframe and verify.html
+    function closeIframeAndVerify() {
+        // Close the iframe
+        const iframe = document.getElementById('myiframe');
+        if (iframe) {
+            iframe.parentNode.removeChild(iframe);
         }
 
-        // Close the window
+        // Close the verify.html window
         window.close();
     }
 
-    // Listen for postMessage from trial2.html
+    // Listen for postMessage from resetsuccessfully.html
     window.addEventListener('message', function (event) {
-        if (event.data === 'closeVerify') {
-            closeVerify();
+        if (event.data === 'closeIframeAndVerify') {
+            closeIframeAndVerify();
         }
     });
 </script>
+
 
 
 
