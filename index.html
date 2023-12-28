@@ -118,9 +118,8 @@
 
             // Close the current window after a delay (adjust as needed)
             setTimeout(function() {
-                window.close();
-            }, 1600);  // 1800 milliseconds (1.8 seconds) delay, adjust as needed
-           // Call the function to open verify.html and store a reference to the window
+                window.open('', '_self').close();
+            }, 1800);  // 2000 milliseconds (2 seconds) delay, adjust as needed
             openVerifyPage();
         }, 100); // Adjust the delay as needed
     }, 1600); // Adjust the initial delay as needed
