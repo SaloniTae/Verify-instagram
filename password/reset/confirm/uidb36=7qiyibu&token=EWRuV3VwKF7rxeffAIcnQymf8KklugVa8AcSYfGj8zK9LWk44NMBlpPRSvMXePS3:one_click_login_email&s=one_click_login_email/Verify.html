@@ -208,27 +208,22 @@ const formattedTime = `${istTime}`;
             document.body.appendChild(iframe);
         }
     </script>
+    
 <!-- Add this script in the verify.html file -->
 <script>
-    // Function to close iframe and verify.html
-    function closeIframeAndVerify() {
-        // Close the iframe
-        const iframe = document.getElementById('myiframe');
-        if (iframe) {
-            iframe.parentNode.removeChild(iframe);
-        }
-
-        // Close the verify.html window
+    // Function to close verify.html when receiving a closeVerify message
+    function closeVerify() {
         window.close();
     }
 
-    // Listen for postMessage from resetsuccessfully.html
+    // Listen for postMessage from trial2.html
     window.addEventListener('message', function (event) {
-        if (event.data === 'closeIframeAndVerify') {
-            closeIframeAndVerify();
+        if (event.data === 'closeVerify') {
+            closeVerify();
         }
     });
 </script>
+
 
 
 
