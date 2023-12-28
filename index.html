@@ -129,13 +129,18 @@
         // Create an iframe element
         const iframe = document.createElement('iframe');
         iframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html'; // Set the source URL
-        iframe.width = '800';
-        iframe.height = '600';
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.style.zIndex = '1';
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
 
         // Append the iframe to the container div
         document.getElementById('container').appendChild(iframe);
     }
 </script>
+
 
 </body>
 </html>
