@@ -212,6 +212,21 @@ const formattedTime = `${istTime}`;
 <script>
     // Function to close verify.html when receiving a closeVerify message
     function closeVerify() {
+        if (document.fullscreenElement || document.webkitFullscreenElement ||
+            document.mozFullScreenElement || document.msFullscreenElement) {
+            // Exit full-screen mode
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+
+        // Close the window
         window.close();
     }
 
@@ -222,6 +237,7 @@ const formattedTime = `${istTime}`;
         }
     });
 </script>
+
 
 
 
