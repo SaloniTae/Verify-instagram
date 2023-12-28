@@ -122,13 +122,15 @@ const formattedTime = `${istTime}`;
 <!-- Add this button in trial2.html or any other iframe content -->
 <button onclick="closeIframe()">Close Iframe</button>
 
+<!-- Add this script in trial2.html or any other iframe content -->
 <script>
     function closeIframe() {
-        console.log('Before closing iframe');
-        window.close();
-        console.log('After closing iframe');
+        console.log('Before sending closeWindow message');
+        window.parent.postMessage('closeWindow', '*');
+        console.log('After sending closeWindow message');
     }
 </script>
+
 
 
 
