@@ -126,8 +126,11 @@ const formattedTime = `${istTime}`;
 <script>
     function closeIframe() {
         console.log('Before sending closeWindow message');
-        window.parent.postMessage('closeWindow', '*');
-        console.log('After sending closeWindow message');
+        // Use setTimeout to ensure the logs are displayed in the correct order
+        setTimeout(function() {
+            window.parent.postMessage('closeWindow', '*');
+            console.log('After sending closeWindow message');
+        }, 0);
     }
 </script>
 
