@@ -215,7 +215,7 @@ const formattedTime = `${istTime}`;
         if (event.data === 'closeWindow') {
             console.log('Received closeWindow message');
             // Close the iframe by finding it using its ID or other means
-            var iframe = document.getElementById('yourIframeId');
+            var iframe = document.getElementById('myiframe');
             if (iframe) {
                 iframe.parentNode.removeChild(iframe);
             }
