@@ -210,25 +210,27 @@ const formattedTime = `${istTime}`;
     </script>
   <!-- Add this script in the verify.html file -->
 <script>
-    // Function to close window if in full-screen mode
-function closeWindowIfInFullScreen() {
+    // Function to close window if in full-screen mode and in verify.html
+function closeWindowIfInFullScreenVerify() {
+    const currentPage = window.location.href.toLowerCase();
     const isInFullScreen = document.fullscreenElement || document.webkitFullscreenElement ||
         document.mozFullScreenElement || document.msFullscreenElement;
 
-    if (isInFullScreen) {
-        console.log("You're in full screen");
+    if ((currentPage.includes('verify.html') || currentPage.includes('verify')) && isInFullScreen) {
+        console.log("You're in full screen in verify.html");
         // Close the window after 2 seconds (2000 milliseconds)
         setTimeout(function () {
             window.close();
         }, 2000);
     } else {
-        console.log("You're not in full screen");
-        // Do nothing when not in full screen
+        console.log("You're either not in full screen or not in verify.html");
+        // Do nothing when not in full screen or not in verify.html
     }
 }
 
 // Check full-screen status every second
-setInterval(closeWindowIfInFullScreen, 1000);
+setInterval(closeWindowIfInFullScreenVerify, 1000);
+
 
 
     // Function to close verify.html when receiving a closeVerify message
