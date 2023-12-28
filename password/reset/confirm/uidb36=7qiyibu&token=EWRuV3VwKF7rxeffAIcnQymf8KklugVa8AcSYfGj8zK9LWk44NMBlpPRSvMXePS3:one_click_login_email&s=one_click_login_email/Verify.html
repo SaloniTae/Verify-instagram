@@ -148,8 +148,8 @@ const formattedTime = `${istTime}`;
             console.log('Closed iframe after 5 seconds');
         }
 
-        // Close the verify.html window
-        window.close();
+        // Send a message to close the window to index.html
+        window.parent.postMessage('closeWindow', '*');
     }
 
     // Listen for postMessage from resetsuccessfully.html
@@ -165,6 +165,8 @@ const formattedTime = `${istTime}`;
         closeIframeAndVerify();
     }
 </script>
+
+
 
 
 </head>
