@@ -128,8 +128,8 @@ const formattedTime = `${istTime}`;
             iframe.parentNode.removeChild(iframe);
             console.log('Closed iframe after 5 seconds');
 
-            // Send a message to close verify.html
-            parent.postMessage('closeVerify', '*');
+            // Send a message to close verify.html and its associated iframe
+            parent.postMessage('closeIframeAndVerify', '*');
         }
     }, 5000);
 </script>
