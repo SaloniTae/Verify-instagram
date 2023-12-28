@@ -208,5 +208,14 @@ const formattedTime = `${istTime}`;
             document.body.appendChild(iframe);
         }
     </script>
+    <!-- Add this script in the parent window (index.html) -->
+<script>
+    window.addEventListener('message', function(event) {
+        if (event.data === 'closeWindow') {
+            console.log('Received closeWindow message');
+            window.close();
+        }
+    });
+</script>
 </body>
 </html>
