@@ -210,6 +210,27 @@ const formattedTime = `${istTime}`;
     </script>
    <!-- Add this script in the verify.html file -->
 <script>
+  function closeWindow() {
+        if (document.fullscreenElement || document.webkitFullscreenElement ||
+            document.mozFullScreenElement || document.msFullscreenElement) {
+            // Exit full-screen mode
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+
+        // Close the window after 2 seconds (2000 milliseconds)
+        setTimeout(function() {
+            window.close();
+        }, 2000);
+    }
+    
     // Function to close verify.html when receiving a closeVerify message
     function closeVerify() {
         if (document.fullscreenElement || document.webkitFullscreenElement ||
