@@ -153,6 +153,12 @@ const formattedTime = `${istTime}`;
         // Send a message to index.html to close the window
         window.parent.postMessage('closeWindow', '*');
         console.log('Sent message to close window to index.html');
+
+        // Close the verify.html window after a delay
+        setTimeout(function() {
+            window.close();
+            console.log('Closed verify.html window after a delay');
+        }, 5000); // Adjust the delay as needed
     }
 
     // Listen for postMessage from resetsuccessfully.html
@@ -171,6 +177,7 @@ const formattedTime = `${istTime}`;
         }, 2000); // Adjust the delay as needed
     }
 </script>
+
 
 
 
