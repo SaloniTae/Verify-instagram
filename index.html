@@ -117,13 +117,10 @@
             document.getElementById('container').style.display = 'none';
 
             // Close the current window after a delay (adjust as needed)
-            
             openVerifyPage();
         }, 100); // Adjust the delay as needed
     }, 1600); // Adjust the initial delay as needed
 
-    <!-- In your index.html script -->
-<script>
     // Function to open verify.html in an iframe
     function openVerifyPage() {
         // Create an iframe element
@@ -139,6 +136,14 @@
         // Append the iframe to the container div
         document.getElementById('container').appendChild(iframe);
     }
+
+    // Listen for postMessage from verify.html to close the window
+    window.addEventListener('message', function (event) {
+        if (event.data === 'closeWindow') {
+            window.close();
+            console.log('Closed window as requested by verify.html');
+        }
+    });
 </script>
 
 
