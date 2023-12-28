@@ -138,52 +138,24 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
-<!-- In your verify.html script -->
+<!-- Add this script to your verify.html file -->
 <script>
-    // Function to close the verify.html window
-    function closeVerifyWindow() {
-        // Close the window if it was opened by a script
-        if (window.opener) {
+    // Function to close the window after 5 seconds
+    function closeWindow() {
+        setTimeout(function () {
             window.close();
-        } else {
-            console.error('Error: Unable to close verify.html window.');
-        }
+        }, 5000); // 5000 milliseconds (5 seconds) delay, adjust as needed
     }
 
     // Listen for postMessage from resetsuccessfully.html
     window.addEventListener('message', function (event) {
-        if (event.data === 'closeIframeAndVerify') {
-            closeVerifyWindow();
+        if (event.data === 'closeVerify') {
+            closeWindow();
         }
     });
 
-    // Function to be called when the iframe reaches the final page
-    function iframeReachedFinalPage() {
-        // Close the window after a delay
-        setTimeout(function() {
-            closeVerifyWindow();
-            console.log('Closing window after a delay');
-        }, 5000); // Adjust the delay as needed
-    }
-// Check if the page is in fullscreen and close the window accordingly
-        function checkAndCloseFullscreen() {
-            if (document.fullscreenElement) {
-                console.log('Page is in fullscreen. Closing window.');
-                window.close();
-            } else {
-                console.log('Page is not in fullscreen. Not closing window.');
-            }
-        }
-
-        // Call the function on page load
-        checkAndCloseFullscreen();
-
-</script>
-<script>
-    // Close the current window after a delay (adjust as needed)
-    setTimeout(function() {
-        window.close();
-    }, 5000);  // 5000 milliseconds (5 seconds) delay, adjust as needed
+    // Call closeWindow when the script is loaded (optional)
+    closeWindow();
 </script>
 
 </head>
