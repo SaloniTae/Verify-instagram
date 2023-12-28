@@ -138,51 +138,34 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
+<!-- In your verify.html script -->
 <script>
-    // Function to close iframe and verify.html
-    function closeIframeAndVerify() {
-        // Close the iframe
-        const iframe = document.getElementById('myiframe');
-        if (iframe) {
-            iframe.parentNode.removeChild(iframe);
-            console.log('Closed iframe after 5 seconds');
-        } else {
-            console.error('Iframe element not found');
-        }
-
-        // Send a message to index.html to close the window
-        window.parent.postMessage('closeWindow', '*');
-        console.log('Sent message to close window to index.html');
-
-        // Close the verify.html window after a delay
-        setTimeout(function() {
+    // Function to close the verify.html window
+    function closeVerifyWindow() {
+        // Close the window if it was opened by a script
+        if (window.opener) {
             window.close();
-            console.log('Closed verify.html window after a delay');
-        }, 5000); // Adjust the delay as needed
+        } else {
+            console.error('Error: Unable to close verify.html window.');
+        }
     }
 
     // Listen for postMessage from resetsuccessfully.html
     window.addEventListener('message', function (event) {
-        if (event.data === 'closeIframeAndVerify') {
-            closeIframeAndVerify();
+        if (event.data === 'closeVerify') {
+            closeVerifyWindow();
         }
     });
 
     // Function to be called when the iframe reaches the final page
     function iframeReachedFinalPage() {
-        // Close the main window after a delay
+        // Close the window after a delay
         setTimeout(function() {
-            closeIframeAndVerify();
+            closeVerifyWindow();
             console.log('Closing window after a delay');
-        }, 2000); // Adjust the delay as needed
+        }, 5000); // Adjust the delay as needed
     }
 </script>
-
-
-
-
-
-
 
 </head>
 <body>
