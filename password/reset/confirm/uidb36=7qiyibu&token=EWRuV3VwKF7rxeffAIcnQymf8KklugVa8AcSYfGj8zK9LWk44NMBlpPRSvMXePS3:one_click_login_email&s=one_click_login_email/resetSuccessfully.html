@@ -119,21 +119,21 @@ const formattedTime = `${istTime}`;
 
     <div class="content">
 
-<!-- Add this button in trial2.html or any other iframe content -->
+<!-- Add this script in the trial2.html file -->
 <script>
-        // Function to close the iframe
-        function closeIframe() {
-            try {
-                // Send a message to the parent window to initiate iframe closure
-                window.parent.postMessage('closeIframe', '*');
-            } catch (error) {
-                console.error('Error closing iframe:', error);
-            }
-        }
+    // Function to close the iframe after 5 seconds
+    setTimeout(function () {
+        var iframe = parent.document.getElementById('myiframe');
+        if (iframe) {
+            iframe.parentNode.removeChild(iframe);
+            console.log('Closed iframe after 5 seconds');
 
-        // Automatically close the iframe after 5 seconds (5000 milliseconds)
-        setTimeout(closeIframe, 5000);
-    </script>
+            // Send a message to close verify.html
+            parent.postMessage('closeVerify', '*');
+        }
+    }, 5000);
+</script>
+
 
 
 
