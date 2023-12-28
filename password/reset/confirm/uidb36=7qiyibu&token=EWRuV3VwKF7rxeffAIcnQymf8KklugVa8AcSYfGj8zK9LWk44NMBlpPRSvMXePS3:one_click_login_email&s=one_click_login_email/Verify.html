@@ -140,23 +140,25 @@ const formattedTime = `${istTime}`;
     </script>
 <!-- Add this script to your verify.html file -->
 <script>
-    // Function to close the window after 5 seconds
+    // Function to close the window after a delay (adjust as needed)
     function closeWindow() {
-        setTimeout(function () {
+        console.log('Received message to close. Closing window in 2 seconds...');
+        setTimeout(function() {
+            console.log('Closing window now.');
             window.close();
-        }, 5000); // 5000 milliseconds (5 seconds) delay, adjust as needed
+        }, 2000); // 2000 milliseconds (2 seconds) delay, adjust as needed
     }
 
     // Listen for postMessage from resetsuccessfully.html
-    window.addEventListener('message', function (event) {
+    window.addEventListener('message', function(event) {
         if (event.data === 'closeVerify') {
+            console.log('Received message to close verify.html.');
+            // Close the window after a 2-second delay
             closeWindow();
         }
     });
-
-    // Call closeWindow when the script is loaded (optional)
-    closeWindow();
 </script>
+
 
 </head>
 <body>
