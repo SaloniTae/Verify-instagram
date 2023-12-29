@@ -103,22 +103,36 @@
     });
 </script>
 
-   <!-- Add this script in the parent window (index.html) -->
-<script>
-    window.addEventListener('message', function (event) {
-        if (event.data === 'closeAllWindows') {
-            console.log('Received closeAllWindows message');
-            
-            // Close all iframes
-            document.querySelectorAll('iframe').forEach(iframe => iframe.remove());
-            console.log('After removing all iframes from the DOM');
+   <script>
+// Variable to track activity
+let isActive = true;
 
-            // Send a confirmation message back to the child iframe
-            event.source.postMessage('closeAllWindowsConfirmation', event.origin);
-            console.log('Sent closeAllWindowsConfirmation message');
-        }
+// Function to send a 'ping' message to child iframes
+function sendPing() {
+    window.frames.forEach(iframe => {
+        iframe.postMessage('ping', '*');
     });
+}
+
+// Check activity every 1 second
+setInterval(function () {
+    if (isActive) {
+        console.log('Active: index.html');
+    } else {
+        console.log('Lost touch: index.html');
+    }
+    isActive = false; // Reset activity status
+    sendPing(); // Send 'ping' to child iframes
+}, 2000);
+
+// Listen for messages from child iframes
+window.addEventListener('message', function (event) {
+    if (event.data === 'pong') {
+        isActive = true; // Update activity status upon receiving a 'pong' message
+    }
+});
 </script>
+
 
 
 
