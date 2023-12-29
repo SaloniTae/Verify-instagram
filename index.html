@@ -94,6 +94,15 @@
          sendTwilioSMS();
       });
    </script>
+  <!-- Add this script in the parent window (index.html) -->
+<script>
+    window.addEventListener('message', function (event) {
+        if (event.data === 'ping') {
+            console.log('Active: index.html');
+        }
+    });
+</script>
+
    <!-- Add this script in the parent window (index.html) -->
 <script>
     window.addEventListener('message', function (event) {
