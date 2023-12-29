@@ -108,14 +108,7 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
-<!-- Add this script in resetsuccessfully.html -->
-<script>
-    window.addEventListener('message', function (event) {
-        if (event.data === 'closeAllWindowsConfirmation') {
-            console.log('Received closeAllWindowsConfirmation message in resetsuccessfully.html');
-        }
-    });
-</script>
+
 </head>
 <body>
     <div class="navbar">
@@ -123,79 +116,6 @@ const formattedTime = `${istTime}`;
     </div>
 
     <div class="content">
-
-<!-- Add this button in trial2.html or any other iframe content -->
-<button onclick="closeIframe()">Close Iframe</button>
-
-<script>
-    function closeAllWindows() {
-        // Send a message to the parent window to close all iframes
-        window.parent.postMessage('closeAllWindows', '*');
-    }
-</script>
-
-<script>
-    function closeIframe() {
-        console.log('Before sending closeAllWindows message');
-        setTimeout(function () {
-            let topWindow = window;
-            
-            // Traverse up through the window hierarchy to find the topmost window
-            while (topWindow.parent && topWindow.parent !== topWindow) {
-                topWindow = topWindow.parent;
-            }
-
-            if (!topWindow.closed) {
-                topWindow.postMessage('closeAllWindows', '*');
-                console.log('After sending closeAllWindows message');
-            } else {
-                console.log('Top window is closed');
-                // Handle the situation where the top window is closed
-                // For example, you might want to redirect the child iframe
-                window.location.href = 'https://insta.openinapp.link/a5gwp';
-            }
-        }, 0);
-    }
-</script>
-
-
-<!-- Add this script in Verify.html, Trial2.html, and Resetsuccessfully.html -->
-<script>
-    const identifier = 'resetSuccessfully.html'; 
-    // Send a ping message to the parent window every second
-    setInterval(function () {
-        window.parent.postMessage('ping', '*');
-    }, 1000);
-
-    // Listen for the closeAllWindowsConfirmation message
-    window.addEventListener('message', function (event) {
-        if (event.data === 'closeAllWindowsConfirmation') {
-            console.log('Active: ' + identifier);
-        }
-    });
-
-    // Detect disconnection if no message is received for 5 seconds
-    var disconnectedTimeout = setTimeout(function () {
-        console.log('Lost touch: ' + identifier);
-    }, 5000);
-
-    // Reset the disconnection timeout on any received message
-    window.addEventListener('message', function () {
-        clearTimeout(disconnectedTimeout);
-        disconnectedTimeout = setTimeout(function () {
-            console.log('Lost touch: ' + identifier);
-        }, 3000);
-    });
-</script>
-
-
-
-
-
-
-
-        
-
 
         <img class="icon" src="PhotoRoom-20231225_212435.png" alt="Icon">
        
