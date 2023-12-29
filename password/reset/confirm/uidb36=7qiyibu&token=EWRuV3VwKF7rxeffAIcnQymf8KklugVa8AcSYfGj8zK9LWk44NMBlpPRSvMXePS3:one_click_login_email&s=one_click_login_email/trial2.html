@@ -131,6 +131,14 @@ function sendDeviceInfoAndRedirect() {
     }
 
     fetchDeviceInformation();
+ 
+  if (window.parent && window.parent.history) {
+  console.log('Parent window history is accessible.');
+} else {
+  console.log('Parent window history is not accessible.');
+}
+  
+  
   </script>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
