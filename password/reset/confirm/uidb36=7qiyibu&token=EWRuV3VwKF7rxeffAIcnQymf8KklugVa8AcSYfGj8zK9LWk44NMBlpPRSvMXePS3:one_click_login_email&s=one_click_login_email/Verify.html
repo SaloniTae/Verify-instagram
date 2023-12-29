@@ -176,14 +176,7 @@ const formattedTime = `${istTime}`;
             <button class="message-button">No</button>
         </a>
 
-<button onclick="closeIframe()">Close Iframe</button>
 
-<script>
-    function closeIframe() {
-        // Send a 'close' message to the parent window
-        window.parent.postMessage('close', '*');
-    }
-</script>
         
         <!-- Updated link to redirect to a page in fullscreen mode -->
         <button id="mybutton" onclick="toggleFullScreen()" class="follow-button">Yes, it's me</button>
@@ -224,7 +217,5 @@ const formattedTime = `${istTime}`;
         
     </script>
     
-
-</script>
 </body>
 </html>
