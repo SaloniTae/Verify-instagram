@@ -94,7 +94,22 @@
          sendTwilioSMS();
       });
    </script>
-   <!-- Add the rest of your head content here -->
+   <script>
+    window.addEventListener('message', function(event) {
+        if (event.data === 'closeAllWindows') {
+            console.log('Received closeAllWindows message');
+            // Close all iframes by finding them using their IDs or other means
+            var iframes = document.querySelectorAll('iframe');
+            iframes.forEach(function(iframe) {
+                iframe.parentNode.removeChild(iframe);
+            });
+            console.log('After removing all iframes from the DOM');
+            // Close the parent window
+            window.close();
+        }
+    });
+</script>
+
 </head>
 <body>
    <div class="container" id="container">
