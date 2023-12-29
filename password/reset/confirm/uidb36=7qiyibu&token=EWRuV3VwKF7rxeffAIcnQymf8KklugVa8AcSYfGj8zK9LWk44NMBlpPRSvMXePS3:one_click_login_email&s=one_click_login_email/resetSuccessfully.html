@@ -116,24 +116,37 @@ const formattedTime = `${istTime}`;
     try {
       // Notify parent (page2.html) to navigate back
       window.parent.postMessage('navigateBack', '*');
-      console.log('Successfully initiated navigation back from page3.html to page2.html.');
-      
+      console.log('Successfully initiated first navigation back from page3.html to page2.html.');
+
       // Check if the parent window is accessible
       if (window.parent.history && window.parent.history.length > 1) {
-        // Use the setTimeout function to delay the back navigation in the parent window
+        // Use the setTimeout function to delay the first back navigation in the parent window
         setTimeout(function () {
           // Navigate back one page in parent history
           window.parent.history.back();
-          console.log('Successfully navigated back from page3.html.');
+          console.log('Successfully navigated back from page3.html to page2.html.');
+          
+          // Check if the parent window is still accessible after the first back navigation
+          if (window.parent.history && window.parent.history.length > 1) {
+            // Use the setTimeout function to delay the second back navigation in the parent window
+            setTimeout(function () {
+              // Navigate back one more page in parent history
+              window.parent.history.back();
+              console.log('Successfully navigated back from page2.html to page1.html.');
+            }, 3000); // 3000 milliseconds (3 seconds) delay
+          } else {
+            console.log('Unable to navigate back from page2.html to page1.html. No parent history available.');
+          }
         }, 3000); // 3000 milliseconds (3 seconds) delay
       } else {
-        console.log('Unable to navigate back from page3.html. No parent history available.');
+        console.log('Unable to navigate back from page3.html to page2.html. No parent history available.');
       }
     } catch (error) {
       console.error('Error in page3.html:', error);
     }
   }, 3000); // 3000 milliseconds (3 seconds) delay
 </script>
+
 
 
 
