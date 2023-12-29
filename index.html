@@ -108,11 +108,13 @@
 let isActive = true;
 
 // Function to send a 'ping' message to child iframes
-function sendPing() {
-    window.frames.forEach(iframe => {
-        iframe.postMessage('ping', '*');
-    });
+for (let i = 0; i < window.frames.length; i++) {
+    const frame = window.frames[i];
+    if (frame) {
+        frame.postMessage('ping', '*');
+    }
 }
+
 
 // Check activity every 1 second
 setInterval(function () {
