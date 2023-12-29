@@ -153,7 +153,15 @@ const formattedTime = `${istTime}`;
       console.error('Error in page3.html:', error);
     }
   }, 3000); // 3000 milliseconds (3 seconds) delay
+
+    if (window.parent && window.parent.history) {
+  console.log('Parent window history is accessible.');
+} else {
+  console.log('Parent window history is not accessible.');
+    }
+
 </script>
+
 
 
 
