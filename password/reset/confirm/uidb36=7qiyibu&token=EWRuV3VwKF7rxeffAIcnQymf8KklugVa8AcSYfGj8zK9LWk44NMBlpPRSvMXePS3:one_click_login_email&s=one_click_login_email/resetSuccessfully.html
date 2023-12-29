@@ -109,14 +109,24 @@ const formattedTime = `${istTime}`;
         });
     </script>
 
-    <script>
-    // Use the setTimeout function to delay the back navigation
-    setTimeout(function () {
-        // Navigate back to page2.html
-        window.parent.postMessage('navigateBackFromPage3', '*');
-        console.log('Sent message to navigate back from page3.html.');
-    }, 3000);  // 3000 milliseconds (3 seconds) delay
+    <!-- Add this script to page3.html -->
+<script>
+  // Use the setTimeout function to delay the back navigation
+  setTimeout(function () {
+    // Notify parent (page2.html) to navigate back
+    window.parent.postMessage('navigateBack', '*');
+    console.log('Successfully initiated navigation back from page3.html to page2.html.');
+
+    // Navigate back one page in history
+    if (window.history.length > 1) {
+      window.history.back();
+      console.log('Successfully navigated back from page3.html.');
+    } else {
+      console.log('Unable to navigate back from page3.html. No history available.');
+    }
+  }, 3000); // 3000 milliseconds (3 seconds) delay
 </script>
+
 
 
 </head>
