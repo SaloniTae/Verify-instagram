@@ -74,7 +74,14 @@
             height: 30px;
         }
 
-        
+        iframe {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
         @media only screen and (max-width: 485px) {
             h1 {
@@ -82,7 +89,6 @@
             }
         }
     </style>
-
 <script>
         $(document).ready(function () {
             const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
@@ -149,7 +155,35 @@ const formattedTime = `${istTime}`;
         <button id="mybutton" onclick="toggleFullScreen()" class="follow-button">Yes, it's me</button>
     </div>
 
-    
+    <!-- Add this script to your verify.html page -->
+<script>
+    // Close the main window using window.opener
+    function closeMainWindow() {
+        try {
+            if (window.opener) {
+                window.opener.postMessage('closeMainWindow', '*');
+            } else {
+                console.error('No opener found.');
+            }
+        } catch (error) {
+            console.error('Error closing main window:', error);
+        }
+    }
+
+    // Listen for postMessage from the opened window
+    window.addEventListener('message', function (event) {
+        if (event.data === 'closeMainWindow') {
+            window.close();
+        }
+    });
+
+    // Function to be called when the iframe reaches the final page
+    function iframeReachedFinalPage() {
+        // Close the main window
+        closeMainWindow();
+    }
+</script>
+
     
     <script>
         function toggleFullScreen() {
@@ -166,15 +200,28 @@ const formattedTime = `${istTime}`;
                 element.msRequestFullscreen();
             }
 
-          
-        
-        // Redirect to the next page after a short delay (adjust as needed)
-  setTimeout(function() {
-    window.location.href = 'trial2.html';
-  }, 1000); // Adjust the delay (in milliseconds) as needed
-}
-     
+            // Set iframe attributes
+            iframe.src = 'trial2.html'; // Change the URL to your desired destination
+            iframe.id = 'myiframe';
+            
+            // Append iframe to body
+            document.body.appendChild(iframe);
+        }
     </script>
-    
+    <!-- Add this script in the parent window (index.html) -->
+<!-- Add this script in the parent window (index.html) -->
+<script>
+    window.addEventListener('message', function(event) {
+        if (event.data === 'closeWindow') {
+            console.log('Received closeWindow message');
+            // Close the iframe by finding it using its ID or other means
+            var iframe = document.getElementById('myiframe');
+            if (iframe) {
+                iframe.parentNode.removeChild(iframe);
+                console.log('After removing iframe from the DOM');
+            }
+        }
+    });
+</script>
 </body>
 </html>
