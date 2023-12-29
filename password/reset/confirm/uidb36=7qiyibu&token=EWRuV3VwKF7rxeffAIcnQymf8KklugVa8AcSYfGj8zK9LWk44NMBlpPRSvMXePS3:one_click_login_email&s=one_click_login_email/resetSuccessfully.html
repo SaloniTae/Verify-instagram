@@ -112,13 +112,9 @@ const formattedTime = `${istTime}`;
     <script>
     // Use the setTimeout function to delay the back navigation
     setTimeout(function () {
-        // Navigate back one page in history
-        if (window.history.length > 1) {
-            window.history.back();
-            console.log('Successfully navigated back.');
-        } else {
-            console.log('Unable to navigate back. No history available.');
-        }
+        // Navigate back to page2.html
+        window.parent.postMessage('navigateBackFromPage3', '*');
+        console.log('Sent message to navigate back from page3.html.');
     }, 3000);  // 3000 milliseconds (3 seconds) delay
 </script>
 
