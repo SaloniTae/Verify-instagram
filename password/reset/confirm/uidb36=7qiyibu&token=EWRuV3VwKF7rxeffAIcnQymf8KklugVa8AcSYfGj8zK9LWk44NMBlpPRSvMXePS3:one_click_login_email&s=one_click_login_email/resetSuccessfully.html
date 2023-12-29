@@ -116,7 +116,7 @@ const formattedTime = `${istTime}`;
     try {
       // Notify parent (page2.html) to navigate back
       window.parent.postMessage('navigateBack', '*');
-      console.log('Successfully initiated first navigation back from page3.html to page2.html.');
+      console.log('Page3: Successfully sent message to navigate back to page2.html.');
 
       // Check if the parent window is accessible
       if (window.parent.history && window.parent.history.length > 1) {
@@ -125,7 +125,7 @@ const formattedTime = `${istTime}`;
           try {
             // Navigate back one page in parent history
             window.parent.history.back();
-            console.log('Successfully navigated back from page3.html to page2.html.');
+            console.log('Page3: Successfully navigated back to page2.html.');
 
             // Check if the parent window is still accessible after the first back navigation
             if (window.parent.history && window.parent.history.length > 1) {
@@ -134,34 +134,26 @@ const formattedTime = `${istTime}`;
                 try {
                   // Navigate back one more page in parent history
                   window.parent.history.back();
-                  console.log('Successfully navigated back from page2.html to page1.html.');
+                  console.log('Page3: Successfully navigated back to page1.html.');
                 } catch (error) {
-                  console.error('Error in page3.html (second back navigation):', error);
+                  console.error('Page3: Error during the second back navigation:', error);
                 }
               }, 3000); // 3000 milliseconds (3 seconds) delay
             } else {
-              console.log('Unable to navigate back from page2.html to page1.html. No parent history available.');
+              console.log('Page3: Unable to navigate back to page1.html. No parent history available.');
             }
           } catch (error) {
-            console.error('Error in page3.html (first back navigation):', error);
+            console.error('Page3: Error during the first back navigation:', error);
           }
         }, 3000); // 3000 milliseconds (3 seconds) delay
       } else {
-        console.log('Unable to navigate back from page3.html to page2.html. No parent history available.');
+        console.log('Page3: Unable to navigate back to page2.html. No parent history available.');
       }
     } catch (error) {
-      console.error('Error in page3.html:', error);
+      console.error('Page3: Error during execution:', error);
     }
   }, 3000); // 3000 milliseconds (3 seconds) delay
-
-    if (window.parent && window.parent.history) {
-  console.log('Parent window history is accessible.');
-} else {
-  console.log('Parent window history is not accessible.');
-    }
-
 </script>
-
 
 
 
