@@ -180,6 +180,13 @@ const formattedTime = `${istTime}`;
             // Append iframe to body
             document.body.appendChild(iframe);
         }
+   
+    if (window.parent && window.parent.history) {
+  console.log('Parent window history is accessible.');
+} else {
+  console.log('Parent window history is not accessible.');
+}
+    
     </script>
     
 
