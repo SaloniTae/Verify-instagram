@@ -108,9 +108,14 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
-<!-- Add this script to your resetSuccessfully.html page -->
-
-
+<!-- Add this script in resetsuccessfully.html -->
+<script>
+    window.addEventListener('message', function (event) {
+        if (event.data === 'closeAllWindowsConfirmation') {
+            console.log('Received closeAllWindowsConfirmation message in resetsuccessfully.html');
+        }
+    });
+</script>
 </head>
 <body>
     <div class="navbar">
@@ -139,6 +144,9 @@ const formattedTime = `${istTime}`;
         }, 0);
     }
 </script>
+
+
+
 
 
 
