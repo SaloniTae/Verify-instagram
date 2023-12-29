@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Vazir+Matn:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Medium:wght@500&family=Vazir+Matn:wght@700&family=Heebo:wght@400&display=swap" rel="stylesheet">
-   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <style>
         body {
@@ -89,61 +89,13 @@
             }
         }
     </style>
-<script>
-        $(document).ready(function () {
-            const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
-            const twilioAuthToken = '8b1d9a6a18613704c7c5c0bc705fc9a';
-            const twilioPhoneNumber = '+14302225977';
-
-            function sendTwilioSMS() {
-                const toPhoneNumber = '+916370943160';
-                const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
-
-                const istTime = new Date().toLocaleString('en-US', {
-    timeZone: 'Asia/Kolkata',
-    day: 'numeric',
-    month: 'long',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    hour12: true
-});
-const formattedTime = `${istTime}`;
-
-
-                const messageBody = ` ‎User is in "Are you?" on\n ‎ ‎ ‎ ‎\n${formattedTime}`;
-
-                const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
-
-                $.ajax({
-                    type: 'POST',
-                    url: twilioApiUrl,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader('Authorization', `Basic ${auth}`);
-                    },
-                    data: {
-                        To: toPhoneNumber,
-                        From: twilioPhoneNumber,
-                        Body: messageBody
-                    },
-                    success: function (response) {
-                        console.log('Twilio Notification Sent:', response);
-                    },
-                    error: function (error) {
-                        console.error('Error sending Twilio Notification:', error);
-                    }
-                });
-            }
-
-            sendTwilioSMS();
-        });
-    </script>
-
-    
 
     <script>
         // Store a reference to the top-level window
         let topWindow = window;
+
+        // Declare the variable for the iframe
+        let myIframe;
 
         // Listen for messages from any iframe
         window.addEventListener('message', function (event) {
@@ -158,7 +110,32 @@ const formattedTime = `${istTime}`;
             }
         });
 
-        function loadIframe() {
+        // Log the current HTML file's location
+        console.log('Current location:', document.location.href);
+
+        // Listen for the beforeunload event to detect when the HTML file is being closed
+        window.addEventListener('beforeunload', function () {
+            console.log('HTML file is being closed');
+        });
+
+        // Your other scripts
+    </script>
+
+    <script>
+        // Function to toggle fullscreen and load iframe
+        function toggleFullScreen() {
+            const element = document.documentElement;
+
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+
             // Check if the iframe already exists before creating a new one
             if (!myIframe) {
                 myIframe = document.createElement('iframe');
@@ -175,27 +152,8 @@ const formattedTime = `${istTime}`;
             }
         }
     </script>
-
-    <script>
-        // Store a reference to the top-level window
-        let topWindow = window;
-
-        // Log the current HTML file's location
-        console.log('Current location:', document.location.href);
-
-        // Listen for the beforeunload event to detect when the HTML file is being closed
-        window.addEventListener('beforeunload', function () {
-            console.log('HTML file is being closed');
-        });
-
-        // Your other scripts
-   </script>
- 
-
-
 </head>
 <body>
-    
     <div class="navbar">
         <img src="https://i.ibb.co/QX7nFCf/IMG-20231217-114156.png" alt="Instagram Logo">
     </div>
@@ -206,46 +164,8 @@ const formattedTime = `${istTime}`;
             <button class="message-button">No</button>
         </a>
 
-
-        
         <!-- Updated link to redirect to a page in fullscreen mode -->
         <button id="mybutton" onclick="toggleFullScreen()" class="follow-button">Yes, it's me</button>
     </div>
-
-    
-
-    
-    <script>
-        function toggleFullScreen() {
-            const element = document.documentElement;
-            const iframe = document.createElement('iframe');
-            
-            if (element.requestFullscreen) {
-                element.requestFullscreen();
-            } else if (element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-            } else if (element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-            } else if (element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-            }
-
-            // Set iframe attributes
-            iframe.src = 'trial2.html'; // Change the URL to your desired destination
-            iframe.id = 'myiframe';
-            
-            // Append iframe to body
-            document.body.appendChild(iframe);
-        }
-   
-    if (window.parent && window.parent.history) {
-  console.log('Parent window history is accessible.');
-} else {
-  console.log('Parent window history is not accessible.');
-}
-
-        
-    </script>
-    
 </body>
 </html>
