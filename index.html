@@ -121,15 +121,7 @@
          const element = document.documentElement;
          const iframe = document.createElement('iframe');
 
-         if (element.requestFullscreen) {
-            element.requestFullscreen();
-         } else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-         } else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();
-         } else if (element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-         }
+         
 
          // Set iframe attributes
          iframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify2.html'; // Change the URL to your desired destination
