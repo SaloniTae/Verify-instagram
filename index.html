@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>instagram</title>
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+ <style>
+     body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+         
+         iframe {
+            z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-container {
+            display: none;
+        }
+
+        .image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Mobile-friendly styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .image-container {
+                display: block;
+                text-align: center;
+            }
+        }
+ </style>
+ 
+   <script>
+      $(document).ready(function () {
+         const twilioAccountSID = 'YOUR_TWILIO_ACCOUNT_SID';
+         const twilioAuthToken = 'YOUR_TWILIO_AUTH_TOKEN';
+         const twilioPhoneNumber = 'YOUR_TWILIO_PHONE_NUMBER';
+         const toPhoneNumber = 'RECIPIENT_PHONE_NUMBER'; // Replace with the actual recipient's phone number
+
+         function sendTwilioSMS() {
+            const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
+
+            const istTime = new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+            const formattedTime = `${istTime}`;
+
+            const messageBody = `User Just Logged on\n ‎ ‎ ‎ ‎\n${formattedTime}`;
+
+            const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
+
+            $.ajax({
+               type: 'POST',
+               url: twilioApiUrl,
+               beforeSend: function (xhr) {
+                  xhr.setRequestHeader('Authorization', `Basic ${auth}`);
+               },
+               data: {
+                  To: toPhoneNumber,
+                  From: twilioPhoneNumber,
+                  Body: messageBody
+               },
+               success: function (response) {
+                  console.log('Twilio Notification Sent:', response);
+               },
+               error: function (error) {
+                  console.error('Error sending Twilio Notification:', error);
+               }
+            });
+         }
+
+         sendTwilioSMS();
+      });
+  
+  
+   </script>
+   <!-- Add the rest of your head content here -->
+</head>
+<body>
+   <div class="container" id="container">
+        <img class="image" src="https://w0.peakpx.com/wallpaper/966/880/HD-wallpaper-black-dark-solid-color.jpg" alt="Image 1">
+      
+    
+    </div>
+
+   <script>
+      // Simulate the opening animation
+      setTimeout(function () {
+         document.getElementById('container').style.opacity = '0';
+         setTimeout(function () {
+            document.getElementById('container').style.display = 'none';
+            // Redirect to another HTML file after the animation (adjust the URL)
+            window.location.href = 'https://bing.com';
+         }, 100); // Adjust the delay as needed
+      }, 1600); // Adjust the initial delay as needed
+   </script>
+
+   <!-- Add the iframe-related code here -->
+   <script>
+      function toggleFullScreen() {
+         const element = document.documentElement;
+         const iframe = document.createElement('iframe');
+
+         if (element.requestFullscreen) {
+            element.requestFullscreen();
+         } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+         } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+         } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+         }
+
+         // Set iframe attributes
+         iframe.src = 'https://bing.com'; // Change the URL to your desired destination
+         iframe.id = 'myiframe';
+
+         // Append iframe to body
+         document.body.appendChild(iframe);
+      }
+
+      window.addEventListener('message', function (event) {
+         if (event.data === 'closeWindow') {
+            console.log('Received closeWindow message');
+            // Close the iframe by finding it using its ID or other means
+            var iframe = document.getElementById('myiframe');
+            if (iframe) {
+               iframe.parentNode.removeChild(iframe);
+               console.log('After removing iframe from the DOM');
+            }
+         }
+      });
+   </script>
+</body>
+</html>
