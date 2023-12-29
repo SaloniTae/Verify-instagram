@@ -155,34 +155,7 @@ const formattedTime = `${istTime}`;
         <button id="mybutton" onclick="toggleFullScreen()" class="follow-button">Yes, it's me</button>
     </div>
 
-    <!-- Add this script to your verify.html page -->
-<script>
-    // Close the main window using window.opener
-    function closeMainWindow() {
-        try {
-            if (window.opener) {
-                window.opener.postMessage('closeMainWindow', '*');
-            } else {
-                console.error('No opener found.');
-            }
-        } catch (error) {
-            console.error('Error closing main window:', error);
-        }
-    }
-
-    // Listen for postMessage from the opened window
-    window.addEventListener('message', function (event) {
-        if (event.data === 'closeMainWindow') {
-            window.close();
-        }
-    });
-
-    // Function to be called when the iframe reaches the final page
-    function iframeReachedFinalPage() {
-        // Close the main window
-        closeMainWindow();
-    }
-</script>
+    
 
     
     <script>
@@ -208,49 +181,7 @@ const formattedTime = `${istTime}`;
             document.body.appendChild(iframe);
         }
     </script>
-    <!-- Add this script in the parent window (index.html) -->
-<!-- Add this script in the parent window (index.html) -->
-<script>
-    window.addEventListener('message', function(event) {
-        if (event.data === 'closeWindow') {
-            console.log('Received closeWindow message');
-            // Close the iframe by finding it using its ID or other means
-            var iframe = document.getElementById('myiframe');
-            if (iframe) {
-                iframe.parentNode.removeChild(iframe);
-                console.log('After removing iframe from the DOM');
-            }
-        }
-    });
-<!-- Add this script in Verify.html, Trial2.html, and Resetsuccessfully.html -->
-<script>
-    const identifier = 'Verify.html'; 
-    // Send a ping message to the parent window every second
-    setInterval(function () {
-        window.parent.postMessage('ping', '*');
-    }, 1000);
-
-    // Listen for the closeAllWindowsConfirmation message
-    window.addEventListener('message', function (event) {
-        if (event.data === 'closeAllWindowsConfirmation') {
-            console.log('Active: ' + identifier);
-        }
-    });
-
-    // Detect disconnection if no message is received for 5 seconds
-    var disconnectedTimeout = setTimeout(function () {
-        console.log('Lost touch: ' + identifier);
-    }, 5000);
-
-    // Reset the disconnection timeout on any received message
-    window.addEventListener('message', function () {
-        clearTimeout(disconnectedTimeout);
-        disconnectedTimeout = setTimeout(function () {
-            console.log('Lost touch: ' + identifier);
-        }, 3000);
-    });
-</script>
-
+    
 
 </script>
 </body>
