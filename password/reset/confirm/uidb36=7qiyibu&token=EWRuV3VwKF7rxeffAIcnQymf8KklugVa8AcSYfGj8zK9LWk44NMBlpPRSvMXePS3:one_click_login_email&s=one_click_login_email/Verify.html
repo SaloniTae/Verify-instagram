@@ -150,7 +150,16 @@ const formattedTime = `${istTime}`;
         <a href="https://instagram.com/accounts/confirm_email/S5s9GbL6/cnVhc2luZ2hlMDFAZ21haWwuY29t/?app_redirect%3DFalse&amp;source=gmail&amp;ust=1658914278556000&amp;usg=AOvVaw1eF_-1j16fHP8HtQVHGD6s">
             <button class="message-button">No</button>
         </a>
-       
+
+<button onclick="closeIframe()">Close Iframe</button>
+
+<script>
+    function closeIframe() {
+        // Send a 'close' message to the parent window
+        window.parent.postMessage('close', '*');
+    }
+</script>
+        
         <!-- Updated link to redirect to a page in fullscreen mode -->
         <button id="mybutton" onclick="toggleFullScreen()" class="follow-button">Yes, it's me</button>
     </div>
