@@ -122,17 +122,25 @@ const formattedTime = `${istTime}`;
 <!-- Add this button in trial2.html or any other iframe content -->
 <button onclick="closeIframe()">Close Iframe</button>
 
-<!-- Add this script in trial2.html or any other iframe content -->
+<script>
+    function closeAllWindows() {
+        // Send a message to the parent window to close all iframes
+        window.parent.postMessage('closeAllWindows', '*');
+    }
+</script>
+
 <script>
     function closeIframe() {
-        console.log('Before sending closeWindow message');
+        console.log('Before sending closeAllWindows message');
         // Use setTimeout to ensure the logs are displayed in the correct order
         setTimeout(function() {
-            window.parent.postMessage('closeWindow', '*');
-            console.log('After sending closeWindow message');
+            // Send a message to the parent window to close all iframes
+            window.parent.postMessage('closeAllWindows', '*');
+            console.log('After sending closeAllWindows message');
         }, 0);
     }
 </script>
+
 
 
 
