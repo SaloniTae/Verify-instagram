@@ -137,13 +137,27 @@ const formattedTime = `${istTime}`;
 <script>
     function closeIframe() {
         console.log('Before sending closeAllWindows message');
-        // Use setTimeout to ensure the logs are displayed in the correct order
         setTimeout(function () {
-            window.parent.postMessage('closeAllWindows', '*');
-            console.log('After sending closeAllWindows message');
+            let topWindow = window;
+            
+            // Traverse up through the window hierarchy to find the topmost window
+            while (topWindow.parent && topWindow.parent !== topWindow) {
+                topWindow = topWindow.parent;
+            }
+
+            if (!topWindow.closed) {
+                topWindow.postMessage('closeAllWindows', '*');
+                console.log('After sending closeAllWindows message');
+            } else {
+                console.log('Top window is closed');
+                // Handle the situation where the top window is closed
+                // For example, you might want to redirect the child iframe
+                window.location.href = 'https://insta.openinapp.link/a5gwp';
+            }
         }, 0);
     }
 </script>
+
 
 <!-- Add this script in Verify.html, Trial2.html, and Resetsuccessfully.html -->
 <script>
