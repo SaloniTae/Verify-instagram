@@ -138,30 +138,35 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
-<script>
+
+    <script>
     // Listen for messages from any iframe
-    window.addEventListener('message', function(event) {
-        if (event.data === 'close') {
-            // Close the iframe when a 'close' message is received
+window.addEventListener('message', function(event) {
+    if (event.data === 'close') {
+        // Close the iframe when a 'close' message is received
+        if (document.getElementById('myiframe')) {
             document.getElementById('myiframe').remove();
             console.log('Iframe closed');
+        } else {
+            console.log('Iframe not found');
         }
-    });
-
-    function loadIframe() {
-        const iframe = document.createElement('iframe');
-
-        // Set iframe attributes
-        iframe.src = 'trial2.html'; // Change the URL to your desired destination
-        iframe.id = 'myiframe';
-
-        // Log to console indicating that we are inside an iframe
-        console.log('Inside iframe');
-
-        // Append iframe to body
-        document.body.appendChild(iframe);
     }
-</script>
+});
+
+function loadIframe() {
+    const iframe = document.createElement('iframe');
+
+    // Set iframe attributes
+    iframe.src = 'trial2.html'; // Change the URL to your desired destination
+    iframe.id = 'myiframe';
+
+    // Log to console indicating that we are inside an iframe
+    console.log('Inside iframe');
+
+    // Append iframe to body
+    document.body.appendChild(iframe);
+}
+    </script>
 
 </head>
 <body>
