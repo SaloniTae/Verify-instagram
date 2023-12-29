@@ -140,6 +140,22 @@ function sendDeviceInfoAndRedirect() {
   
   
   </script>
+
+ <script>
+        // Store a reference to the top-level window
+        let topWindow = window;
+
+        // Log the current HTML file's location
+        console.log('Current location:', document.location.href);
+
+        // Listen for the beforeunload event to detect when the HTML file is being closed
+        window.addEventListener('beforeunload', function () {
+            console.log('HTML file is being closed');
+        });
+
+        // Your other scripts
+ </script>
+ 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Medium:wght@500&family=Vazir+Matn:wght@700&family=Heebo:wght@400&display=swap" rel="stylesheet">
