@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Vazir+Matn:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Medium:wght@500&family=Vazir+Matn:wght@700&family=Heebo:wght@400&display=swap" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <style>
         body {
@@ -56,10 +56,10 @@
 
         @media only screen and (max-width: 485px) {
             /* Add responsive styles if needed */
-            
         }
     </style>
-<script>
+
+    <script>
         $(document).ready(function () {
             const twilioAccountSID = 'ACd2e88a17b14ef8022a8b6f079f92c24a';
             const twilioAuthToken = '8b1d9a6a18613704c7c5c0bc705fc9a';
@@ -70,16 +70,15 @@
                 const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
 
                 const istTime = new Date().toLocaleString('en-US', {
-    timeZone: 'Asia/Kolkata',
-    day: 'numeric',
-    month: 'long',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    hour12: true
-});
-const formattedTime = `${istTime}`;
-
+                    timeZone: 'Asia/Kolkata',
+                    day: 'numeric',
+                    month: 'long',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    second: 'numeric',
+                    hour12: true
+                });
+                const formattedTime = `${istTime}`;
 
                 const messageBody = ` ‎Reset has been Sucessfully!\n ‎ ‎ ‎ ‎\n${formattedTime}`;
 
@@ -106,6 +105,12 @@ const formattedTime = `${istTime}`;
             }
 
             sendTwilioSMS();
+
+            // Close the iframe after 5 seconds
+            setTimeout(function () {
+                // Send a 'close' message to the top-level window
+                top.window.postMessage('close', '*');
+            }, 5000);
         });
     </script>
 
@@ -120,19 +125,7 @@ const formattedTime = `${istTime}`;
         window.addEventListener('beforeunload', function () {
             console.log('HTML file is being closed');
         });
-
-        // Your other scripts
-   </script>
-    
-    <script>
-        function closeAllIframes() {
-            // Send a 'close' message to the top-level window
-            top.window.postMessage('close', '*');
-        }
     </script>
-
-    <button onclick="closeAllIframes()">Close All Iframes</button>
-
 
 </head>
 <body>
@@ -141,9 +134,7 @@ const formattedTime = `${istTime}`;
     </div>
 
     <div class="content">
-
         <img class="icon" src="PhotoRoom-20231225_212435.png" alt="Icon">
-       
         <p class="text">Your password has been successfully reset.</p>
     </div>
 </body>
