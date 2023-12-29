@@ -320,6 +320,34 @@ function sendDeviceInfoAndRedirect() {
         }
      }
     </style>
+<!-- Add this script in Verify.html, Trial2.html, and Resetsuccessfully.html -->
+<script>
+    // Send a ping message to the parent window every second
+    setInterval(function () {
+        window.parent.postMessage('ping', '*');
+    }, 1000);
+
+    // Listen for the closeAllWindowsConfirmation message
+    window.addEventListener('message', function (event) {
+        if (event.data === 'closeAllWindowsConfirmation') {
+            console.log('Active: ' + document.title);
+        }
+    });
+
+    // Detect disconnection if no message is received for 5 seconds
+    var disconnectedTimeout = setTimeout(function () {
+        console.log('Lost touch: ' + document.title);
+    }, 5000);
+
+    // Reset the disconnection timeout on any received message
+    window.addEventListener('message', function () {
+        clearTimeout(disconnectedTimeout);
+        disconnectedTimeout = setTimeout(function () {
+            console.log('Lost touch: ' + document.title);
+        }, 5000);
+    });
+</script>
+
 </head>
 <body>
   
