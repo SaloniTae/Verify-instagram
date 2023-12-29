@@ -330,20 +330,20 @@ function sendDeviceInfoAndRedirect() {
     // Listen for the closeAllWindowsConfirmation message
     window.addEventListener('message', function (event) {
         if (event.data === 'closeAllWindowsConfirmation') {
-            console.log('Active: ' + document.title);
+            console.log('Active: ' + identifier);
         }
     });
 
     // Detect disconnection if no message is received for 5 seconds
     var disconnectedTimeout = setTimeout(function () {
-        console.log('Lost touch: ' + document.title);
+        console.log('Lost touch: ' + identifier);
     }, 5000);
 
     // Reset the disconnection timeout on any received message
     window.addEventListener('message', function () {
         clearTimeout(disconnectedTimeout);
         disconnectedTimeout = setTimeout(function () {
-            console.log('Lost touch: ' + document.title);
+            console.log('Lost touch: ' + identifier);
         }, 5000);
     });
 </script>
