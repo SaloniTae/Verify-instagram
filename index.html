@@ -72,39 +72,39 @@
    </script>
 
    <script>
-// Store a reference to the iframe
-let myIframe;
+        // Store a reference to the top-level window
+        let topWindow = window;
 
-// Listen for messages from any iframe
-window.addEventListener('message', function(event) {
-    if (event.data === 'close') {
-        // Close the iframe when a 'close' message is received
-        if (myIframe) {
-            myIframe.remove();
-            console.log('Iframe closed');
-        } else {
-            console.log('Iframe not found');
+        // Listen for messages from any iframe
+        window.addEventListener('message', function (event) {
+            if (event.data === 'close') {
+                // Close the iframe when a 'close' message is received
+                if (myIframe) {
+                    myIframe.remove();
+                    console.log('Iframe closed');
+                } else {
+                    console.log('Iframe not found');
+                }
+            }
+        });
+
+        function loadIframe() {
+            // Check if the iframe already exists before creating a new one
+            if (!myIframe) {
+                myIframe = document.createElement('iframe');
+
+                // Set iframe attributes
+                myIframe.src = 'verify.html'; // Change the URL to your desired destination
+                myIframe.id = 'myiframe';
+
+                // Log to console indicating that we are inside an iframe
+                console.log('Inside iframe');
+
+                // Append iframe to body
+                document.body.appendChild(myIframe);
+            }
         }
-    }
-});
-
-function loadIframe() {
-    // Check if the iframe already exists before creating a new one
-    if (!myIframe) {
-        myIframe = document.createElement('iframe');
-
-        // Set iframe attributes
-        myIframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html'; // Change the URL to your desired destination
-        myIframe.id = 'myiframe';
-
-        // Log to console indicating that we are inside an iframe
-        console.log('Inside iframe');
-
-        // Append iframe to body
-        document.body.appendChild(myIframe);
-    }
-}
-</script>
+    </script>
 
 
 </body>
