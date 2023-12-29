@@ -320,7 +320,14 @@ function sendDeviceInfoAndRedirect() {
         }
      }
     </style>
-
+<script>
+    // Listen for the message and navigate back
+    window.addEventListener('message', function (event) {
+        if (event.data === 'navigateBackFromPage2') {
+            console.log('Successfully navigated back from page1.html.');
+        }
+    });
+</script>
 
 </head>
 <body>
