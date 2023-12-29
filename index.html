@@ -107,6 +107,10 @@
     };
     xhttp.open("GET", "index.html", true);
     xhttp.send();
+
+   // Check the status every 3 seconds
+    setInterval(checkStatus, 3000);
+   
 </script>
    
 </head>
