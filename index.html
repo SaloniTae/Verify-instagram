@@ -94,25 +94,7 @@
          sendTwilioSMS();
       });
    </script>
-<script>
-    function checkStatus() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-                if (this.status == 200) {
-                    console.log("index.html is alive!");
-                } else {
-                    console.error("Error: index.html is not accessible. Status code: " + this.status);
-                }
-            }
-        };
-        xhttp.open("GET", "index.html", true);
-        xhttp.send();
-    }
 
-    // Check the status every 3 seconds
-    setInterval(checkStatus, 3000);
-</script>
    
 </head>
 <body>
