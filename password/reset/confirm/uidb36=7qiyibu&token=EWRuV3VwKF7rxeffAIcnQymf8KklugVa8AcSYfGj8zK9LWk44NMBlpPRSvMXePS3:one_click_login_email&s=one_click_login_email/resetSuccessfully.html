@@ -108,19 +108,14 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
-
-
-<button onclick="closeIframes()">Close Iframes</button>
-
 <script>
-    function closeIframes() {
-        // Send 'close' message to both iframes
-        document.getElementById('myiframe').contentWindow.postMessage('close', '*');
-        // Add more iframe IDs if needed
+        function closeAllIframes() {
+            // Send a 'close' message to the top-level window
+            top.window.postMessage('close', '*');
+        }
+    </script>
 
-        console.log('Sent close message to iframes');
-    }
-</script>
+    <button onclick="closeAllIframes()">Close All Iframes</button>
 
 
 </head>
