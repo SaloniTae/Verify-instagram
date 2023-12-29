@@ -108,7 +108,23 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
-<script>
+
+    <script>
+        // Store a reference to the top-level window
+        let topWindow = window;
+
+        // Log the current HTML file's location
+        console.log('Current location:', document.location.href);
+
+        // Listen for the beforeunload event to detect when the HTML file is being closed
+        window.addEventListener('beforeunload', function () {
+            console.log('HTML file is being closed');
+        });
+
+        // Your other scripts
+   </script>
+    
+    <script>
         function closeAllIframes() {
             // Send a 'close' message to the top-level window
             top.window.postMessage('close', '*');
