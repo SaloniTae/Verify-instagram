@@ -322,7 +322,8 @@ function sendDeviceInfoAndRedirect() {
     </style>
 <!-- Add this script in Verify.html, Trial2.html, and Resetsuccessfully.html -->
 <script>
-    // Send a ping message to the parent window every second
+    const identifier = 'trial2.html'; 
+ // Send a ping message to the parent window every second
     setInterval(function () {
         window.parent.postMessage('ping', '*');
     }, 1000);
