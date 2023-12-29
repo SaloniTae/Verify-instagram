@@ -94,7 +94,20 @@
          sendTwilioSMS();
       });
    </script>
-  <!-- Add this script in the parent window (index.html) -->
+ 
+   <script>
+    window.addEventListener('message', function (event) {
+        if (event.data === 'closeAllWindows') {
+            console.log('Received closeAllWindows message');
+            // Close or handle the closing of all iframes
+            // For example, you can set a variable to indicate closing and then redirect if needed
+            // window.location.href = 'alternative-page.html';
+        }
+    });
+</script>
+
+   
+   <!-- Add this script in the parent window (index.html) -->
 <script>
     window.addEventListener('message', function (event) {
         if (event.data === 'ping') {
