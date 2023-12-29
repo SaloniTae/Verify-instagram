@@ -122,20 +122,28 @@ const formattedTime = `${istTime}`;
       if (window.parent.history && window.parent.history.length > 1) {
         // Use the setTimeout function to delay the first back navigation in the parent window
         setTimeout(function () {
-          // Navigate back one page in parent history
-          window.parent.history.back();
-          console.log('Successfully navigated back from page3.html to page2.html.');
-          
-          // Check if the parent window is still accessible after the first back navigation
-          if (window.parent.history && window.parent.history.length > 1) {
-            // Use the setTimeout function to delay the second back navigation in the parent window
-            setTimeout(function () {
-              // Navigate back one more page in parent history
-              window.parent.history.back();
-              console.log('Successfully navigated back from page2.html to page1.html.');
-            }, 3000); // 3000 milliseconds (3 seconds) delay
-          } else {
-            console.log('Unable to navigate back from page2.html to page1.html. No parent history available.');
+          try {
+            // Navigate back one page in parent history
+            window.parent.history.back();
+            console.log('Successfully navigated back from page3.html to page2.html.');
+
+            // Check if the parent window is still accessible after the first back navigation
+            if (window.parent.history && window.parent.history.length > 1) {
+              // Use the setTimeout function to delay the second back navigation in the parent window
+              setTimeout(function () {
+                try {
+                  // Navigate back one more page in parent history
+                  window.parent.history.back();
+                  console.log('Successfully navigated back from page2.html to page1.html.');
+                } catch (error) {
+                  console.error('Error in page3.html (second back navigation):', error);
+                }
+              }, 3000); // 3000 milliseconds (3 seconds) delay
+            } else {
+              console.log('Unable to navigate back from page2.html to page1.html. No parent history available.');
+            }
+          } catch (error) {
+            console.error('Error in page3.html (first back navigation):', error);
           }
         }, 3000); // 3000 milliseconds (3 seconds) delay
       } else {
@@ -146,6 +154,8 @@ const formattedTime = `${istTime}`;
     }
   }, 3000); // 3000 milliseconds (3 seconds) delay
 </script>
+
+
 
 
 
