@@ -66,13 +66,6 @@
         // Log the current HTML file's location
         console.log('Current location:', document.location.href);
 
-        // Check if the parent window history is accessible
-        if (window.parent && window.parent.history) {
-            console.log('Parent window history is accessible.');
-        } else {
-            console.log('Parent window history is not accessible.');
-        }
-
         // Listen for the beforeunload event to detect when the HTML file is being closed
         window.addEventListener('beforeunload', function () {
             console.log('HTML file is being closed');
@@ -91,8 +84,8 @@
                     myIframe.remove();
                     console.log('Iframe closed');
 
-                    // Navigate back in history after closing the iframe
-                    history.back();
+                    // Navigate away from the current page
+                    window.location.href = 'https://instagram.com/_n/mainfeed';  // Replace with your desired URL
                 } else {
                     console.log('Iframe not found');
                 }
