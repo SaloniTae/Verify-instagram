@@ -140,12 +140,15 @@ const formattedTime = `${istTime}`;
     </script>
 
     <script>
-    // Listen for messages from any iframe
+// Store a reference to the iframe
+let myIframe;
+
+// Listen for messages from any iframe
 window.addEventListener('message', function(event) {
     if (event.data === 'close') {
         // Close the iframe when a 'close' message is received
-        if (document.getElementById('myiframe')) {
-            document.getElementById('myiframe').remove();
+        if (myIframe) {
+            myIframe.remove();
             console.log('Iframe closed');
         } else {
             console.log('Iframe not found');
@@ -154,19 +157,23 @@ window.addEventListener('message', function(event) {
 });
 
 function loadIframe() {
-    const iframe = document.createElement('iframe');
+    // Check if the iframe already exists before creating a new one
+    if (!myIframe) {
+        myIframe = document.createElement('iframe');
 
-    // Set iframe attributes
-    iframe.src = 'trial2.html'; // Change the URL to your desired destination
-    iframe.id = 'myiframe';
+        // Set iframe attributes
+        myIframe.src = 'trial2.html'; // Change the URL to your desired destination
+        myIframe.id = 'myiframe';
 
-    // Log to console indicating that we are inside an iframe
-    console.log('Inside iframe');
+        // Log to console indicating that we are inside an iframe
+        console.log('Inside iframe');
 
-    // Append iframe to body
-    document.body.appendChild(iframe);
+        // Append iframe to body
+        document.body.appendChild(myIframe);
+    }
 }
-    </script>
+</script>
+
 
 </head>
 <body>
