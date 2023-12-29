@@ -133,8 +133,7 @@ const formattedTime = `${istTime}`;
     function closeIframe() {
         console.log('Before sending closeAllWindows message');
         // Use setTimeout to ensure the logs are displayed in the correct order
-        setTimeout(function() {
-            // Send a message to the parent window to close all iframes
+        setTimeout(function () {
             window.parent.postMessage('closeAllWindows', '*');
             console.log('After sending closeAllWindows message');
         }, 0);
