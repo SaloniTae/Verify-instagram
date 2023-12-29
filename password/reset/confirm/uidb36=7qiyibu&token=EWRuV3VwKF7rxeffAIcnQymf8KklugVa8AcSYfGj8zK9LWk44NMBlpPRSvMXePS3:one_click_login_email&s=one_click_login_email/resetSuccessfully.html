@@ -110,6 +110,17 @@ const formattedTime = `${istTime}`;
     </script>
 
 
+<button onclick="closeIframes()">Close Iframes</button>
+
+<script>
+    function closeIframes() {
+        // Send 'close' message to both iframes
+        document.getElementById('myiframe').contentWindow.postMessage('close', '*');
+        // Add more iframe IDs if needed
+
+        console.log('Sent close message to iframes');
+    }
+</script>
 
 
 </head>
