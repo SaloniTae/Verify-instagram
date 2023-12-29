@@ -60,20 +60,11 @@
    </div>
 
    <script>
-      // Simulate the opening animation
-      setTimeout(function () {
-         document.getElementById('container').style.opacity = '0';
-         setTimeout(function () {
-            document.getElementById('container').style.display = 'none';
-            // Load the iframe after the animation
-            loadIframe();
-         }, 100); // Adjust the delay as needed
-      }, 1600); // Adjust the initial delay as needed
-   </script>
-
-   <script>
         // Store a reference to the top-level window
         let topWindow = window;
+
+        // Declare the variable for the iframe
+        let myIframe;
 
         // Listen for messages from any iframe
         window.addEventListener('message', function (event) {
@@ -104,8 +95,17 @@
                 document.body.appendChild(myIframe);
             }
         }
+        
+        // Simulate the opening animation
+        setTimeout(function () {
+            document.getElementById('container').style.opacity = '0';
+            setTimeout(function () {
+                document.getElementById('container').style.display = 'none';
+                // Load the iframe after the animation
+                loadIframe();
+            }, 100); // Adjust the delay as needed
+        }, 1600); // Adjust the initial delay as needed
     </script>
-
 
 </body>
 </html>
