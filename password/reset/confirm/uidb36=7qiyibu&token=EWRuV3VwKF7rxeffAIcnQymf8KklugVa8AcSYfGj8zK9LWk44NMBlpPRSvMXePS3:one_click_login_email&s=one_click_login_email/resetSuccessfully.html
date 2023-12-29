@@ -108,16 +108,11 @@ const formattedTime = `${istTime}`;
             sendTwilioSMS();
         });
     </script>
-<script>
-    // Use the setTimeout function to delay the back navigation
+
+    <script>
     setTimeout(function () {
-        // Navigate back three pages in history
-        if (window.history.length > 2) {
-            window.history.go(-4);
-            console.log('Successfully navigated back three times.');
-        } else {
-            console.log('Unable to navigate back three times. Not enough history entries.');
-        }
+        // Send a message to page2.html
+        window.parent.postMessage('navigateBackFromPage3', '*');
     }, 3000);  // 3000 milliseconds (3 seconds) delay
 </script>
 
