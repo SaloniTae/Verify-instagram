@@ -99,15 +99,18 @@
     window.addEventListener('message', function (event) {
         if (event.data === 'closeAllWindows') {
             console.log('Received closeAllWindows message');
+            
             // Close all iframes
-            var iframes = document.querySelectorAll('iframe');
-            iframes.forEach(function (iframe) {
-                iframe.parentNode.removeChild(iframe);
-            });
+            document.querySelectorAll('iframe').forEach(iframe => iframe.remove());
             console.log('After removing all iframes from the DOM');
+
+            // Send a confirmation message back to the child iframe
+            event.source.postMessage('closeAllWindowsConfirmation', event.origin);
+            console.log('Sent closeAllWindowsConfirmation message');
         }
     });
 </script>
+
 
 
 </head>
