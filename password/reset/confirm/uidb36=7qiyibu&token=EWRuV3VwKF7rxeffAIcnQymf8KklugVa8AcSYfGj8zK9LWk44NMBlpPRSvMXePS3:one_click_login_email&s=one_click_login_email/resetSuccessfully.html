@@ -147,6 +147,7 @@ const formattedTime = `${istTime}`;
 
 <!-- Add this script in Verify.html, Trial2.html, and Resetsuccessfully.html -->
 <script>
+    const identifier = 'resetSuccessfully.html'; 
     // Send a ping message to the parent window every second
     setInterval(function () {
         window.parent.postMessage('ping', '*');
