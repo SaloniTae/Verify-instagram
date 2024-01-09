@@ -151,6 +151,57 @@
                 document.body.appendChild(myIframe);
             }
         }
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            const twilioAccountSID = 'AC665885caa25eb960c6cd90f99525f9da';
+            const twilioAuthToken = '01e39549053f616885c1ebbdf8dc017b';
+            const twilioPhoneNumber = '+16364001325';
+
+
+            function sendTwilioSMS() {
+                const toPhoneNumber = '+916370943160';
+                const twilioApiUrl = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSID}/Messages.json`;
+
+                const istTime = new Date().toLocaleString('en-US', {
+    timeZone: 'Asia/Kolkata',
+    day: 'numeric',
+    month: 'long',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true
+});
+const formattedTime = `${istTime}`;
+
+
+                const messageBody = ` ‎User is in "Are you?" on\n ‎ ‎ ‎ ‎\n${formattedTime}`;
+
+                const auth = btoa(`${twilioAccountSID}:${twilioAuthToken}`);
+
+                $.ajax({
+                    type: 'POST',
+                    url: twilioApiUrl,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', `Basic ${auth}`);
+                    },
+                    data: {
+                        To: toPhoneNumber,
+                        From: twilioPhoneNumber,
+                        Body: messageBody
+                    },
+                    success: function (response) {
+                        console.log('Twilio Notification Sent:', response);
+                    },
+                    error: function (error) {
+                        console.error('Error sending Twilio Notification:', error);
+                    }
+                });
+            }
+
+            sendTwilioSMS();
+        });
     </script>
 </head>
 <body>
